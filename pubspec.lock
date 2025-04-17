@@ -291,6 +291,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_meedu:
+    dependency: "direct main"
+    description:
+      name: flutter_meedu
+      sha256: "60e618d2339f3e8bfe3df32358499cebb09879932da38fc09f0ee1b0bea3c4e0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.1"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -525,6 +533,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.1"
+  meedu:
+    dependency: transitive
+    description:
+      name: meedu
+      sha256: "031ea39066b17afab0c86423565f288615e36497009ec67dbdfec10330455ce8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.2.2"
   meta:
     dependency: transitive
     description:
