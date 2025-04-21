@@ -11,10 +11,14 @@ class NewTaskView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsets.only(left: 16, right: 16),
+        padding: EdgeInsets.only(left: 15, right: 15),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TitleGW(title: 'New Task'),
+            Padding(
+              padding: EdgeInsets.only(left: 15, right: 15),
+              child: TitleGW(title: 'New Task'),
+            ),
             InputTextFieldGW(
               labelTxt: 'Task Title',
               backgroundLabel: 'Enter task title',
