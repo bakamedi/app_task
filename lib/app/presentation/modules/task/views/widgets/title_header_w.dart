@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../global/utils/router_util.dart';
+import '../../../../global/widgets/titles/title_gw.dart';
+import '../../../../router/app_routes/new_task_route.dart';
+
 class TitleHeaderW extends StatelessWidget {
   const TitleHeaderW({super.key});
 
@@ -13,22 +17,22 @@ class TitleHeaderW extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'My Tasks',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          ),
+          TitleGW(title: 'My Tasks'),
           InkWell(
             onTap: () {
               // acción del botón
             },
             borderRadius: BorderRadius.circular(30),
-            child: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: primaryColor.withValues(alpha: 0.2),
-                shape: BoxShape.circle,
+            child: InkWell(
+              onTap: () => RouterUtil.push(NewTaskRoute.path),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: primaryColor.withValues(alpha: 0.2),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(Icons.add, color: primaryColor),
               ),
-              child: Icon(Icons.add, color: primaryColor),
             ),
           ),
         ],

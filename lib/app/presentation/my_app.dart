@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../core/adaptative_screen/adaptative_screen.dart';
+import 'global/router/router_gc.dart';
 import 'global/widgets/loader/loader_gw.dart';
 import 'router/router_provider.dart';
 
@@ -11,6 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final adaptativeScreen = AdaptativeScreen(context);
+    final RouterGC routerController = routerGP.read();
+
+    routerController.setRouter(routerProvider.read());
 
     return Stack(
       alignment: Alignment.center,
