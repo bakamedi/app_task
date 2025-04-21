@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../global/extensions/widgets_ext.dart';
+import '../../../global/widgets/btns/primary_btn.dart';
 import '../../../global/widgets/inputs/input_text_gw.dart';
 import '../../../global/widgets/titles/title_gw.dart';
 
@@ -44,6 +46,12 @@ class NewTaskView extends StatelessWidget {
               obscureText: false,
               readOnly: false,
               enabled: true,
+            ),
+            1.h.expanded,
+            PrimaryButton(
+              onPressed: () {},
+              padding: EdgeInsets.only(bottom: 50),
+              label: 'Add Task',
             ),
           ],
         ),
