@@ -1,6 +1,5 @@
 import '../../../../domain/defs/type_defs.dart';
 import '../../../../domain/models/task/task_model.dart';
-import '../../../../presentation/global/extensions/finder_ext.dart';
 import '../../../../presentation/global/extensions/task_ext.dart';
 import '../store/store_provider.dart';
 
@@ -24,11 +23,9 @@ class TaskProvider {
     await _storeProvider.removeRecord(finder: task.finderById);
   }
 
-  Future<List<Task>> getTasks({bool completed = false}) async {
+  Future<List<Task>> getTasks() async {
     try {
-      final records = await _storeProvider.getAllRecords(
-        finder: FinderExtensions.byCompleted(completed),
-      );
+      final records = await _storeProvider.getAllRecords();
 
       return records
           .map((record) => Task.fromJson(record.value as Json))

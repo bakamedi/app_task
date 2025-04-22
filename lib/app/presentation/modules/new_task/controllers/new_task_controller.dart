@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
+import '../../../../domain/models/task/task_model.dart';
 import '../../../../domain/uses_cases/tasks/new_task_use_case.dart';
+import '../../../../domain/uses_cases/tasks/update_task_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
 import '../../../global/extensions/copy_with_updater_ext.dart';
 import '../../../global/extensions/task_ext.dart';
@@ -12,6 +14,7 @@ final newTaskProvider = Provider.state<NewTaskController, NewTaskState>(
   (_) => NewTaskController(
     NewTaskState.initialState,
     newTaskUseCase: UseCases.newTaskUseCase.read(),
+    updateTaskUseCase: UseCases.updateTaskUseCase.read(),
   ),
 );
 
@@ -19,9 +22,12 @@ class NewTaskController extends StateNotifier<NewTaskState> {
   NewTaskController(
     super.initialState, {
     required NewTaskUseCase newTaskUseCase,
-  }) : _newTaskUseCase = newTaskUseCase;
+    required UpdateTaskUseCase updateTaskUseCase,
+  }) : _newTaskUseCase = newTaskUseCase,
+       _updateTaskUseCase = updateTaskUseCase;
 
   final NewTaskUseCase _newTaskUseCase;
+  final UpdateTaskUseCase _updateTaskUseCase;
 
   GlobalKey<FormState>? get formTaskKey => state.formTaskKey;
 
@@ -43,5 +49,9 @@ class NewTaskController extends StateNotifier<NewTaskState> {
         tastToAdd: state.tastToAdd.copyWith(description: description ?? ''),
       ),
     );
+  }
+
+  Future<void> updateTask(Task task) async {
+    await _updateTaskUseCase.call(task);
   }
 }

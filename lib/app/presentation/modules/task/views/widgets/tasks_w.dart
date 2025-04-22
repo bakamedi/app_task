@@ -3,7 +3,7 @@ import 'package:flutter_meedu/consumer.dart';
 
 import '../../../../../domain/models/task/task_model.dart';
 import '../../../../global/widgets/main_scaffold_gw.dart';
-import '../../controllers/task_controller.dart';
+import '../../utils/update_completed.dart';
 import 'empty_task_w.dart';
 import 'task_item_w.dart';
 
@@ -13,8 +13,6 @@ class TasksW extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, BuilderRef ref) {
-    final taskController = ref.watch(taskProvider);
-
     return MainScaffoldGW(
       isEmpty: tasks.isEmpty,
       emptyBody: EmptyTaskW(),
@@ -26,7 +24,7 @@ class TasksW extends ConsumerWidget {
             title: task.title,
             description: task.description,
             completed: task.completed,
-            onTap: () => taskController.onChangeCompleted(task),
+            onTap: () => updateCompleted(task),
           );
         },
       ),

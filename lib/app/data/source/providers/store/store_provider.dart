@@ -26,6 +26,8 @@ class StoreProvider {
       final records = await _store.find(_dbProvider.db, finder: finder);
       return records;
     } catch (e) {
+      Exception('Error get all records: $e');
+
       return [];
     }
   }
@@ -35,6 +37,8 @@ class StoreProvider {
       await _store.update(_dbProvider.db, value, finder: finder);
       return true;
     } catch (e) {
+      Exception('Error updating record: $e');
+
       return false;
     }
   }

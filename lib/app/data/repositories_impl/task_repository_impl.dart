@@ -22,12 +22,12 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<List<Task>> getTasks({bool completed = false}) async {
-    return await _taskProvider.getTasks(completed: completed);
+  Future<List<Task>> getTasks() async {
+    return await _taskProvider.getTasks();
   }
 
   @override
-  Future<void> updateTask(Task task) {
-    throw UnimplementedError();
+  Future<void> updateTask(Task task) async {
+    await _taskProvider.updateTask(task);
   }
 }

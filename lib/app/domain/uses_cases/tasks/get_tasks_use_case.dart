@@ -6,7 +6,7 @@ class GetTasksUseCase {
     : _taskRepository = taskRepository;
   final TaskRepository _taskRepository;
 
-  Future<List<Task>> call({bool completed = false}) async {
-    return await _taskRepository.getTasks(completed: completed);
+  Future<List<Task>> call() async {
+    return await _taskRepository.getTasks();
   }
 }
