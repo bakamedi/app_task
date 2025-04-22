@@ -1,15 +1,15 @@
 import 'package:go_router/go_router.dart';
-import '../../modules/new_task/views/new_task_view.dart';
+import '../../modules/splash/views/splash_view.dart';
 
-class NewTaskRoute {
-  static const path = '/new-task';
+class SplashRoute {
+  static const path = '/splash';
 
   static GoRoute get route {
     return GoRoute(
       path: path,
       name: path,
       builder: (context, __) {
-        return NewTaskView();
+        return SplashView();
       },
     );
   }
