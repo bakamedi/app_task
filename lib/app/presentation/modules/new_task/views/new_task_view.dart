@@ -6,7 +6,7 @@ import '../../../global/utils/task_validators.dart';
 import '../../../global/widgets/btns/primary_btn.dart';
 import '../../../global/widgets/inputs/input_text_gw.dart';
 import '../../../global/widgets/titles/title_gw.dart';
-import '../../task/utils/add_task.dart';
+import '../utils/add_task.dart';
 import '../controllers/new_task_controller.dart';
 
 class NewTaskView extends StatelessWidget {

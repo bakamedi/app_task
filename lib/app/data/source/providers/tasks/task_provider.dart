@@ -1,3 +1,4 @@
+import '../../../../domain/defs/type_defs.dart';
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../presentation/global/extensions/finder_ext.dart';
 import '../../../../presentation/global/extensions/task_ext.dart';
@@ -30,7 +31,7 @@ class TaskProvider {
       );
 
       return records
-          .map((record) => Task.fromJson(record.value as Map<String, dynamic>))
+          .map((record) => Task.fromJson(record.value as Json))
           .toList();
     } catch (e) {
       Exception('Error getTasks: $e');

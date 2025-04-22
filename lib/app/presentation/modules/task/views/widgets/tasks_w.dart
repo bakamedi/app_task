@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/consumer.dart';
 
 import '../../../../../domain/models/task/task_model.dart';
 import '../../../../global/widgets/main_scaffold_gw.dart';
+import '../../controllers/task_controller.dart';
 import 'empty_task_w.dart';
 import 'task_item_w.dart';
 
-class TasksW extends StatelessWidget {
+class TasksW extends ConsumerWidget {
   const TasksW({super.key, required this.tasks});
   final List<Task> tasks;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, BuilderRef ref) {
+    final taskController = ref.watch(taskProvider);
+
     return MainScaffoldGW(
       isEmpty: tasks.isEmpty,
       emptyBody: EmptyTaskW(),
@@ -22,7 +26,7 @@ class TasksW extends StatelessWidget {
             title: task.title,
             description: task.description,
             completed: task.completed,
-            onTap: () {},
+            onTap: () => taskController.onChangeCompleted(task),
           );
         },
       ),

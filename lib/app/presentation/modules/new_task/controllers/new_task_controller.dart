@@ -44,12 +44,4 @@ class NewTaskController extends StateNotifier<NewTaskState> {
       ),
     );
   }
-
-  void onChangeCompleted(bool completed) {
-    onlyUpdateWith(
-      (state) => state.copyWith(
-        tastToAdd: state.tastToAdd.copyWith(completed: completed),
-      ),
-    );
-  }
 }
