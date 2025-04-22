@@ -22,3 +22,28 @@ class SlideFromBottomTransition extends StatelessWidget {
     return SlideTransition(position: animation.drive(tween), child: child);
   }
 }
+
+class ScaleFromCenterTransition extends StatelessWidget {
+  const ScaleFromCenterTransition({
+    super.key,
+    required this.animation,
+    required this.child,
+  });
+
+  final Animation<double> animation;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final curvedAnimation = CurvedAnimation(
+      parent: animation,
+      curve: Curves.easeOutBack, // Le da un efecto de “rebote suave”
+    );
+
+    return ScaleTransition(
+      scale: curvedAnimation,
+      alignment: Alignment.center, // Crece desde el centro
+      child: child,
+    );
+  }
+}

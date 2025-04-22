@@ -8,7 +8,6 @@ class SplashRoute {
     return GoRoute(
       path: path,
       name: path,
-
       builder: (context, __) {
         return SplashView();
       },
