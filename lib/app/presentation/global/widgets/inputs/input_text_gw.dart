@@ -130,7 +130,7 @@ InputDecoration _simpleInput(
   return InputDecoration(
     hintText: hintText,
     filled: true,
-    fillColor: const Color.fromARGB(216, 227, 222, 222), // fondo gris claro
+    fillColor: const Color.fromARGB(206, 222, 224, 228), // fondo gris claro
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
