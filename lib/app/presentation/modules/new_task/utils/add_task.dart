@@ -6,7 +6,7 @@ void addTask() async {
   final taskController = taskProvider.read();
   final newTaskController = newTaskProvider.read();
 
-  final response = await newTaskController.addTask();
+  await newTaskController.addTask();
   RouterUtil.pop();
   taskController.init();
 }

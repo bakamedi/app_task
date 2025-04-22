@@ -10,10 +10,16 @@ class HeaderTaskW extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    return TabBar(
-      onTap: (value) {},
-      indicator: DotIndicator(color: Theme.of(context).primaryColor, radius: 3),
-      tabs: [Tab(child: Text('To Do')), Tab(child: Text('Completed'))],
+    return ColoredBox(
+      color: Colors.white,
+      child: TabBar(
+        onTap: (value) {},
+        indicator: DotIndicator(
+          color: Theme.of(context).primaryColor,
+          radius: 3,
+        ),
+        tabs: [Tab(child: Text('To Do')), Tab(child: Text('Completed'))],
+      ),
     );
   }
 
