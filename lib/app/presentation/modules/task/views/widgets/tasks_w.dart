@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../domain/models/task/task_model.dart';
 import '../../../../global/widgets/main_scaffold_gw.dart';
-import '../../utils/add_task.dart';
 import 'empty_task_w.dart';
 import 'task_item_w.dart';
 
@@ -23,7 +22,7 @@ class TasksW extends StatelessWidget {
             title: task.title,
             description: task.description,
             completed: task.completed,
-            onTap: addTask,
+            onTap: () {},
           );
         },
       ),
