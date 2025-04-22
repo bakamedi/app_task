@@ -13,6 +13,6 @@ class MainScaffoldGW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isEmpty ? emptyBody : Expanded(child: body);
+    return isEmpty ? emptyBody : body;
   }
 }

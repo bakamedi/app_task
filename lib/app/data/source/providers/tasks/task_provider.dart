@@ -1,6 +1,6 @@
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../presentation/global/extensions/finder_ext.dart';
-import '../../../../presentation/global/extensions/task_extensions.dart';
+import '../../../../presentation/global/extensions/task_ext.dart';
 import '../store/store_provider.dart';
 
 class TaskProvider {
@@ -24,12 +24,18 @@ class TaskProvider {
   }
 
   Future<List<Task>> getTasks({bool completed = false}) async {
-    final records = await _storeProvider.getAllRecords(
-      finder: FinderExtensions.byCompleted(completed),
-    );
+    try {
+      final records = await _storeProvider.getAllRecords(
+        finder: FinderExtensions.byCompleted(completed),
+      );
 
-    return records
-        .map((task) => Task.fromJson(task as Map<String, dynamic>))
-        .toList();
+      return records
+          .map((record) => Task.fromJson(record.value as Map<String, dynamic>))
+          .toList();
+    } catch (e) {
+      Exception('Error getTasks: $e');
+
+      return [];
+    }
   }
 }

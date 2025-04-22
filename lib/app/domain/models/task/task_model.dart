@@ -19,11 +19,17 @@ abstract class Task with _$Task {
     @JsonKey(name: "title") required String title,
     @JsonKey(name: "description") required String description,
     @JsonKey(name: "completed") required bool completed,
+    @JsonKey(name: "created_at") required String createdAt,
   }) = _Task;
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
 
   /// Static empty factory
-  static Task empty() =>
-      const Task(id: '', title: '', description: '', completed: false);
+  static Task empty() => const Task(
+    id: '',
+    title: '',
+    description: '',
+    completed: false,
+    createdAt: '',
+  );
 }

@@ -11,10 +11,7 @@ abstract class TaskState with _$TaskState {
   const factory TaskState({
     @Default([]) List<Task> toDo,
     @Default([]) List<Task> completed,
-    @Default(Task(id: '', title: '', description: '', completed: false))
-    Task tastToAdd,
   }) = _TaskState;
 
-  static TaskState get initialState =>
-      TaskState(toDo: const [], completed: const [], tastToAdd: Task.empty());
+  static TaskState get initialState => const TaskState(toDo: [], completed: []);
 }

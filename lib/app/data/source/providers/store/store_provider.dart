@@ -14,12 +14,20 @@ class StoreProvider {
   late StoreRef<int, Map<String, Object?>> _store;
 
   Future<void> createRecord(Json value) async {
-    await _store.add(_dbProvider.db, value);
+    try {
+      await _store.add(_dbProvider.db, value);
+    } catch (e) {
+      Exception('Error creating record: $e');
+    }
   }
 
   Future<List<RecordSnapshotJson>> getAllRecords({Finder? finder}) async {
-    final records = await _store.find(_dbProvider.db, finder: finder);
-    return records;
+    try {
+      final records = await _store.find(_dbProvider.db, finder: finder);
+      return records;
+    } catch (e) {
+      return [];
+    }
   }
 
   Future<bool> updateRecord({required Json value, Finder? finder}) async {

@@ -32,6 +32,7 @@ class NewTaskView extends StatelessWidget {
                     child: TitleGW(title: 'New Task'),
                   ),
                   InputTextFieldGW(
+                    onChanged: newTaskController.onChangeTitle,
                     labelTxt: 'Task Title',
                     backgroundLabel: 'Enter task title',
                     margin: EdgeInsets.only(top: 20),
@@ -46,6 +47,7 @@ class NewTaskView extends StatelessWidget {
                     validator: TaskValidators.validateTitle,
                   ),
                   InputTextFieldGW(
+                    onChanged: newTaskController.onChangeDescription,
                     labelTxt: 'Task Description',
                     backgroundLabel: 'Enter task description',
                     margin: EdgeInsets.only(top: 20),
