@@ -5,6 +5,7 @@ analyzer:
     prefer_single_quotes: ignore
     constant_identifier_names: ignore
     invalid_annotation_target: ignore
+    invalid_use_of_protected_member: ignore
   plugins:
     - custom_lint
 

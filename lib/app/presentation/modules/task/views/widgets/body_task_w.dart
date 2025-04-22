@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/consumer.dart';
 
-class BodyTaskW extends StatelessWidget {
+import '../../controllers/task_controller.dart';
+import 'tasks_w.dart';
+
+class BodyTaskW extends ConsumerWidget {
   const BodyTaskW({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return TabBarView(children: [Text('1'), Text('2')]);
+  Widget build(BuildContext context, BuilderRef ref) {
+    final taskController = ref.watch(taskProvider);
+    return TabBarView(
+      children: [
+        TasksW(tasks: taskController.todoTasks),
+        TasksW(tasks: taskController.completedTasks),
+      ],
+    );
   }
 }
