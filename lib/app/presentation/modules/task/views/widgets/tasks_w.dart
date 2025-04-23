@@ -6,6 +6,7 @@ import '../../../../../domain/models/task/task_model.dart';
 import '../../../../global/widgets/scaffold/main_scaffold_gw.dart';
 import '../../../../global/widgets/slidable/slidable_gw.dart';
 import '../../utils/delete_task.dart';
+import '../../utils/go_task.dart';
 import '../../utils/update_completed.dart';
 import 'empty_task_w.dart';
 import 'task_item_w.dart';
@@ -41,7 +42,8 @@ class TasksW extends ConsumerWidget {
               title: task.title,
               description: task.description,
               completed: task.completed,
-              onTap: () => updateCompleted(task),
+              onTap: () => goTask(task),
+              onCheckboxTap: () => updateCompleted(task),
             ),
           );
         },

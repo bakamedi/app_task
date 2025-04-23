@@ -5,6 +5,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
 
+import 'package:sembast/sembast.dart';
+
 part 'task_model.freezed.dart';
 part 'task_model.g.dart';
 
@@ -32,4 +34,7 @@ abstract class Task with _$Task {
     completed: false,
     createdAt: '',
   );
+
+  static Finder finderFilter() =>
+      Finder(sortOrders: [SortOrder('created_at', false)]);
 }

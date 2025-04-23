@@ -25,7 +25,9 @@ class TaskProvider {
 
   Future<List<Task>> getTasks() async {
     try {
-      final records = await _storeProvider.getAllRecords();
+      final records = await _storeProvider.getAllRecords(
+        finder: Task.finderFilter(),
+      );
 
       return records
           .map((record) => Task.fromJson(record.value as Json))

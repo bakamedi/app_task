@@ -14,11 +14,11 @@ abstract class NewTaskState with _$NewTaskState {
     @Default(
       Task(id: '', title: '', description: '', completed: false, createdAt: ''),
     )
-    Task tastToAdd,
+    Task taskToAdd,
   }) = _NewTaskState;
 
   static NewTaskState get initialState => NewTaskState(
     formTaskKey: GlobalKey<FormState>(),
-    tastToAdd: Task.empty(),
+    taskToAdd: Task.empty(),
   );
 }

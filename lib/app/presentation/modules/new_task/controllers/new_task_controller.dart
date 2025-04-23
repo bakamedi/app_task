@@ -35,15 +35,16 @@ class NewTaskController extends StateNotifier<NewTaskState> {
   final DeleteTaskUseCase _deleteTaskUseCase;
 
   GlobalKey<FormState>? get formTaskKey => state.formTaskKey;
+  bool get hasTak => state.taskToAdd.id.isNotEmpty;
 
   Future<void> addTask() async {
-    await _newTaskUseCase.call(state.tastToAdd.withGeneratedId());
+    await _newTaskUseCase.call(state.taskToAdd.withGeneratedId());
   }
 
   void onChangeTitle(String? title) {
     onlyUpdateWith(
       (state) => state.copyWith(
-        tastToAdd: state.tastToAdd.copyWith(title: title ?? ''),
+        taskToAdd: state.taskToAdd.copyWith(title: title ?? ''),
       ),
     );
   }
@@ -51,9 +52,13 @@ class NewTaskController extends StateNotifier<NewTaskState> {
   void onChangeDescription(String? description) {
     onlyUpdateWith(
       (state) => state.copyWith(
-        tastToAdd: state.tastToAdd.copyWith(description: description ?? ''),
+        taskToAdd: state.taskToAdd.copyWith(description: description ?? ''),
       ),
     );
+  }
+
+  void setTaskToAdd(Task task) {
+    onlyUpdateWith((state) => state.copyWith(taskToAdd: task));
   }
 
   Future<void> updateTask(Task task) async {

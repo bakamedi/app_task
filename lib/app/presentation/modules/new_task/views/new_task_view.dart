@@ -8,6 +8,7 @@ import '../../../global/widgets/inputs/input_text_gw.dart';
 import '../../../global/widgets/titles/title_gw.dart';
 import '../utils/add_task.dart';
 import '../controllers/new_task_controller.dart';
+import '../utils/update_task.dart';
 
 class NewTaskView extends StatelessWidget {
   const NewTaskView({super.key});
@@ -27,12 +28,13 @@ class NewTaskView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: TitleGW(title: 'New Task'),
-                  ),
+                  TitleGW(
+                    title:
+                        newTaskController.hasTak ? 'Edition Task' : 'New Task',
+                  ).padding(EdgeInsets.only(left: 15, right: 15)),
                   InputTextFieldGW(
                     onChanged: newTaskController.onChangeTitle,
+                    initialValue: newTaskController.state.taskToAdd.title,
                     labelTxt: 'Task Title',
                     backgroundLabel: 'Enter task title',
                     margin: EdgeInsets.only(top: 20),
@@ -48,6 +50,7 @@ class NewTaskView extends StatelessWidget {
                   ),
                   InputTextFieldGW(
                     onChanged: newTaskController.onChangeDescription,
+                    initialValue: newTaskController.state.taskToAdd.description,
                     labelTxt: 'Task Description',
                     backgroundLabel: 'Enter task description',
                     margin: EdgeInsets.only(top: 20),
@@ -63,9 +66,12 @@ class NewTaskView extends StatelessWidget {
                   ),
                   1.h.expanded,
                   PrimaryButton(
-                    onPressed: addTask,
+                    onPressed:
+                        newTaskController.hasTak
+                            ? () => updateTask()
+                            : () => addTask(),
                     padding: EdgeInsets.only(bottom: 50),
-                    label: 'Add Task',
+                    label: newTaskController.hasTak ? 'Edit Task' : 'Add Task',
                   ),
                 ],
               ),
