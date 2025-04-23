@@ -25,7 +25,7 @@ class TaskItemW extends StatelessWidget {
         margin: const EdgeInsets.only(top: 16, left: 20, right: 20),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: const Color.fromARGB(245, 244, 244, 244),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
