@@ -20,6 +20,7 @@ class TasksW extends ConsumerWidget {
       isEmpty: tasks.isEmpty,
       emptyBody: EmptyTaskW(),
       body: ListView.builder(
+        padding: EdgeInsets.zero,
         itemCount: tasks.length,
         itemBuilder: (BuildContext context, int index) {
           final task = tasks[index];
