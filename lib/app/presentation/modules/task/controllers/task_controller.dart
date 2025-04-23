@@ -38,20 +38,23 @@ class TaskController extends StateNotifier<TaskState> {
   }
 
   void onChangeCompleted(Task task) {
-    final tmpTask = task.copyWith(completed: !task.completed);
+    final updatedTask = task.copyWith(completed: !task.completed);
 
-    final isNowCompleted = tmpTask.completed;
+    final updatedToDo = List<Task>.from(state.toDo)
+      ..removeWhere((t) => t.id == task.id);
+    final updatedCompleted = List<Task>.from(state.completed)
+      ..removeWhere((t) => t.id == task.id);
+    final updatedAll =
+        state.all.map((t) => t.id == task.id ? updatedTask : t).toList();
 
-    final updatedToDo = state.toDo.where((t) => t.id != task.id).toList();
-    final updatedCompleted =
-        state.completed.where((t) => t.id != task.id).toList();
-    if (isNowCompleted) {
-      updatedCompleted.add(tmpTask);
-    } else {
-      updatedToDo.add(tmpTask);
-    }
+    (updatedTask.completed ? updatedCompleted : updatedToDo).add(updatedTask);
+
     onlyUpdateWith(
-      (state) => state.copyWith(toDo: updatedToDo, completed: updatedCompleted),
+      (state) => state.copyWith(
+        toDo: updatedToDo,
+        completed: updatedCompleted,
+        all: updatedAll,
+      ),
     );
   }
 
