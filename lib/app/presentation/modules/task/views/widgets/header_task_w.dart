@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/widgets/dots/dot_indicator_gw.dart';
+import '../../utils/get_tabs.dart';
 
 class HeaderTaskW extends SliverPersistentHeaderDelegate {
   const HeaderTaskW();
@@ -18,11 +19,7 @@ class HeaderTaskW extends SliverPersistentHeaderDelegate {
           color: Theme.of(context).primaryColor,
           radius: 3,
         ),
-        tabs: [
-          Tab(child: Text('All')),
-          Tab(child: Text('To Do')),
-          Tab(child: Text('Completed')),
-        ],
+        tabs: taskTabs,
       ),
     );
   }
