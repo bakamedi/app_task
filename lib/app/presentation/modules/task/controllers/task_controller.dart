@@ -24,11 +24,13 @@ class TaskController extends StateNotifier<TaskState> {
 
   List<Task> get todoTasks => state.toDo;
   List<Task> get completedTasks => state.completed;
+  List<Task> get all => state.all;
 
   Future<void> init() async {
     final tasks = await _getTasksUseCase.call();
     onlyUpdateWith(
       (state) => state.copyWith(
+        all: tasks,
         toDo: tasks.where((task) => !task.completed).toList(),
         completed: tasks.where((task) => task.completed).toList(),
       ),

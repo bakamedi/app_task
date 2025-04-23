@@ -8,7 +8,7 @@ class TabTaskW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [SliverPersistentHeader(pinned: true, delegate: header)];

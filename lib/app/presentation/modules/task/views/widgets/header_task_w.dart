@@ -18,7 +18,11 @@ class HeaderTaskW extends SliverPersistentHeaderDelegate {
           color: Theme.of(context).primaryColor,
           radius: 3,
         ),
-        tabs: [Tab(child: Text('To Do')), Tab(child: Text('Completed'))],
+        tabs: [
+          Tab(child: Text('All')),
+          Tab(child: Text('To Do')),
+          Tab(child: Text('Completed')),
+        ],
       ),
     );
   }

@@ -12,6 +12,7 @@ class BodyTaskW extends ConsumerWidget {
     final taskController = ref.watch(taskProvider);
     return TabBarView(
       children: [
+        TasksW(tasks: taskController.all),
         TasksW(tasks: taskController.todoTasks),
         TasksW(tasks: taskController.completedTasks),
       ],
