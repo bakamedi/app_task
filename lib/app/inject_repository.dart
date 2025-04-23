@@ -4,9 +4,11 @@ import 'core/injects_providers/db/db_inject_provider.dart';
 import 'core/injects_providers/task/task_inject_provider.dart';
 import 'data/repositories_impl/db_repository_impl.dart';
 import 'data/repositories_impl/router_repository_impl.dart';
+import 'data/repositories_impl/snackbar_repository_impl.dart';
 import 'data/repositories_impl/task_repository_impl.dart';
 import 'domain/repositories/db_repository.dart';
 import 'domain/repositories/router_repository.dart';
+import 'domain/repositories/snackbar_repository.dart';
 import 'domain/repositories/task_repository.dart';
 
 class Repositories {
@@ -14,6 +16,10 @@ class Repositories {
 
   static final routerRep = Provider<RouterRepository>(
     (ref) => RouterRepositoryImpl(),
+  );
+
+  static final snackbarRep = Provider<SnackbarRepository>(
+    (ref) => SnackbarRepositoryImpl(),
   );
 
   static final dbRep = Provider<DbRepository>(
