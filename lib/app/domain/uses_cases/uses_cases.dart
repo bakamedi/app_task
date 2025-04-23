@@ -1,6 +1,7 @@
 import 'package:flutter_meedu/providers.dart';
 
 import '../../inject_repository.dart';
+import 'tasks/delete_task_use_case.dart';
 import 'tasks/get_tasks_use_case.dart';
 import 'tasks/new_task_use_case.dart';
 import 'tasks/update_task_use_case.dart';
@@ -18,5 +19,9 @@ class UseCases {
 
   static final updateTaskUseCase = Provider(
     (ref) => UpdateTaskUseCase(taskRepository: Repositories.taskRep.read()),
+  );
+
+  static final deleteTaskUseCase = Provider(
+    (ref) => DeleteTaskUseCase(taskRepository: Repositories.taskRep.read()),
   );
 }

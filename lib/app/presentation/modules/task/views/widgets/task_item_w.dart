@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../global/extensions/widgets_ext.dart';
+
 class TaskItemW extends StatelessWidget {
   const TaskItemW({
     super.key,
@@ -15,57 +17,54 @@ class TaskItemW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.08),
-              blurRadius: 10,
-              spreadRadius: 2,
-              offset: const Offset(0, 4),
+    return Container(
+      margin: const EdgeInsets.only(top: 16, left: 20, right: 20),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withValues(alpha: 0.08),
+            blurRadius: 10,
+            spreadRadius: 2,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Checkbox(
+            value: completed,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6),
             ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Checkbox(
-              value: completed,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-              ),
-              onChanged: (_) => onTap(),
-              activeColor: Colors.deepPurple,
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      decoration: completed ? TextDecoration.lineThrough : null,
-                      color: Colors.black,
-                    ),
+            onChanged: (_) => onTap(),
+            activeColor: Colors.deepPurple,
+          ),
+          12.w,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    decoration: completed ? TextDecoration.lineThrough : null,
+                    color: Colors.black,
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    description,
-                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  description,
+                  style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -12,8 +12,8 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<void> deleteTask(String taskId) {
-    throw UnimplementedError();
+  Future<void> deleteTask(Task task) async {
+    await _taskProvider.deleteTask(task);
   }
 
   @override

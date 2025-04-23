@@ -3,6 +3,7 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
 import '../../../../domain/models/task/task_model.dart';
+import '../../../../domain/uses_cases/tasks/delete_task_use_case.dart';
 import '../../../../domain/uses_cases/tasks/new_task_use_case.dart';
 import '../../../../domain/uses_cases/tasks/update_task_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
@@ -15,6 +16,7 @@ final newTaskProvider = Provider.state<NewTaskController, NewTaskState>(
     NewTaskState.initialState,
     newTaskUseCase: UseCases.newTaskUseCase.read(),
     updateTaskUseCase: UseCases.updateTaskUseCase.read(),
+    deleteTaskUseCase: UseCases.deleteTaskUseCase.read(),
   ),
 );
 
@@ -23,11 +25,14 @@ class NewTaskController extends StateNotifier<NewTaskState> {
     super.initialState, {
     required NewTaskUseCase newTaskUseCase,
     required UpdateTaskUseCase updateTaskUseCase,
+    required DeleteTaskUseCase deleteTaskUseCase,
   }) : _newTaskUseCase = newTaskUseCase,
-       _updateTaskUseCase = updateTaskUseCase;
+       _updateTaskUseCase = updateTaskUseCase,
+       _deleteTaskUseCase = deleteTaskUseCase;
 
   final NewTaskUseCase _newTaskUseCase;
   final UpdateTaskUseCase _updateTaskUseCase;
+  final DeleteTaskUseCase _deleteTaskUseCase;
 
   GlobalKey<FormState>? get formTaskKey => state.formTaskKey;
 
@@ -53,5 +58,9 @@ class NewTaskController extends StateNotifier<NewTaskState> {
 
   Future<void> updateTask(Task task) async {
     await _updateTaskUseCase.call(task);
+  }
+
+  Future<void> deleteTask(Task task) async {
+    await _deleteTaskUseCase.call(task);
   }
 }
