@@ -56,10 +56,11 @@ class TaskController extends StateNotifier<TaskState> {
   }
 
   void deleteTask(Task task) async {
-    onlyUpdateWith((state) {
-      final isCompleted = task.completed;
+    final isCompleted = task.completed;
 
+    onlyUpdateWith((state) {
       return state.copyWith(
+        all: state.all.where((t) => t.id != task.id).toList(),
         toDo:
             isCompleted
                 ? state.toDo
