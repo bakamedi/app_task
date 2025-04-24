@@ -22,10 +22,12 @@ class TaskController extends StateNotifier<TaskState> {
 
   final GetTasksUseCase _getTasksUseCase;
 
+  // Accesos rápidos al estado
   List<Task> get todoTasks => state.toDo;
   List<Task> get completedTasks => state.completed;
   List<Task> get all => state.all;
 
+  /// Inicializa el estado trayendo las tareas
   Future<void> init() async {
     final tasks = await _getTasksUseCase.call();
     onlyUpdateWith(
@@ -37,17 +39,28 @@ class TaskController extends StateNotifier<TaskState> {
     );
   }
 
+  /// Cambiar el estado de completado de una tarea
   void onChangeCompleted(Task task) {
     final updatedTask = task.copyWith(completed: !task.completed);
 
+    // Quitar la tarea de sus listas actuales
     final updatedToDo = List<Task>.from(state.toDo)
       ..removeWhere((t) => t.id == task.id);
     final updatedCompleted = List<Task>.from(state.completed)
       ..removeWhere((t) => t.id == task.id);
-    final updatedAll =
-        state.all.map((t) => t.id == task.id ? updatedTask : t).toList();
 
-    (updatedTask.completed ? updatedCompleted : updatedToDo).add(updatedTask);
+    // Actualizar lista completa
+    final updatedAll =
+        state.all.map((t) {
+          return t.id == task.id ? updatedTask : t;
+        }).toList();
+
+    // Añadir la tarea a la lista correspondiente
+    if (updatedTask.completed) {
+      updatedCompleted.add(updatedTask);
+    } else {
+      updatedToDo.add(updatedTask);
+    }
 
     onlyUpdateWith(
       (state) => state.copyWith(
@@ -58,7 +71,8 @@ class TaskController extends StateNotifier<TaskState> {
     );
   }
 
-  void deleteTask(Task task) async {
+  /// Borrar una tarea
+  void deleteTask(Task task) {
     final isCompleted = task.completed;
 
     onlyUpdateWith((state) {

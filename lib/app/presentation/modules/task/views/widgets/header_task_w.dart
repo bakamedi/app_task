@@ -14,7 +14,10 @@ class HeaderTaskW extends SliverPersistentHeaderDelegate {
     return ColoredBox(
       color: const Color.fromARGB(255, 254, 254, 254),
       child: TabBar(
-        onTap: (value) {},
+        labelColor: Theme.of(context).primaryColor,
+        unselectedLabelColor: Colors.grey,
+        indicatorColor: Colors.transparent,
+        automaticIndicatorColorAdjustment: true,
         indicator: DotIndicator(
           color: Theme.of(context).primaryColor,
           radius: 3,
