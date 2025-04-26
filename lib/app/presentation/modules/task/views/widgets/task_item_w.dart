@@ -10,10 +10,12 @@ class TaskItemW extends StatelessWidget {
     required this.completed,
     required this.onTap,
     required this.onCheckboxTap,
+    required this.order,
   });
   final String title;
   final String description;
   final bool completed;
+  final int order;
   final VoidCallback onTap;
   final VoidCallback onCheckboxTap;
 
@@ -22,7 +24,7 @@ class TaskItemW extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(top: 16, left: 20, right: 20),
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: const Color.fromARGB(245, 244, 244, 244),
@@ -64,6 +66,13 @@ class TaskItemW extends StatelessWidget {
                   Text(
                     description,
                     style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                  ),
+                  Text(
+                    'Order: $order',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: completed ? Colors.green : Colors.red,
+                    ),
                   ),
                 ],
               ),

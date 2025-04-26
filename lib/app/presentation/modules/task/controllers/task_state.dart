@@ -16,4 +16,21 @@ abstract class TaskState with _$TaskState {
 
   static TaskState get initialState =>
       const TaskState(toDo: [], completed: [], all: []);
+
+  TaskState reorderTasks(int oldIndex, int newIndex) {
+    final updatedAll = List<Task>.from(all);
+
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+
+    final Task item = updatedAll.removeAt(oldIndex);
+    updatedAll.insert(newIndex, item);
+
+    return copyWith(
+      all: updatedAll,
+      toDo: updatedAll.where((task) => !task.completed).toList(),
+      completed: updatedAll.where((task) => task.completed).toList(),
+    );
+  }
 }

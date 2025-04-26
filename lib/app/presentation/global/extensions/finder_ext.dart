@@ -4,7 +4,7 @@ extension FinderExtensions on Finder {
   static Finder byCompleted(bool completed) {
     return Finder(
       filter: Filter.equals('completed', completed),
-      sortOrders: [SortOrder('created_at', false)],
+      sortOrders: [SortOrder('order', false)],
     );
   }
 }

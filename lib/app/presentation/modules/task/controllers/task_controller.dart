@@ -89,4 +89,11 @@ class TaskController extends StateNotifier<TaskState> {
       );
     });
   }
+
+  void reorderTasks(int oldIndex, int newIndex) {
+    onlyUpdateWith((state) => state.reorderTasks(oldIndex, newIndex));
+
+    // Aquí podrías añadir lógica para persistir el nuevo orden si es necesario
+    // await _someUseCase.reorderTasks(state.all);
+  }
 }

@@ -20,6 +20,7 @@ abstract class Task with _$Task {
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "title") required String title,
     @JsonKey(name: "description") required String description,
+    @JsonKey(name: "order") required int order,
     @JsonKey(name: "completed") required bool completed,
     @JsonKey(name: "created_at") required String createdAt,
   }) = _Task;
@@ -32,6 +33,7 @@ abstract class Task with _$Task {
     title: '',
     description: '',
     completed: false,
+    order: 1,
     createdAt: '',
   );
 
