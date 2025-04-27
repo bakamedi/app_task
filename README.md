@@ -1,8 +1,22 @@
-# app_task
+# App Task
 
 A new Flutter project.
 
-## Getting Started
+# Getting Started
+
+## Prerequisitos
+
+- [Flutter](https://docs.flutter.dev/get-started/install) (>= 3.x.x)
+- Un emulador o dispositivo físico (iOS o Android)
+- [VSCode](https://code.visualstudio.com/) o [Android Studio](https://developer.android.com/studio)
+
+## Project Setup
+
+```bash
+$ flutter pub get
+$ dart run build_runner build -d --delete-conflicting-outputs
+$ flutter run
+```
 
 # App Images
 
@@ -15,6 +29,7 @@ A new Flutter project.
   <img src="assets/completed.png" alt="Demo del completed" width="300"/>
 
 </div>
+
 # Folders Structure
 
 ```
