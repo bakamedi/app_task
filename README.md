@@ -4,6 +4,18 @@ A new Flutter project.
 
 ## Getting Started
 
+# App Images
+
+![Demo del home](assets/home.png)
+
+![Demo del añadir](assets/add.png)
+
+![Demo del añadir](assets/home_all.png)
+
+![Demo del añadir](assets/delete.png)
+
+![Demo del añadir](assets/completed.png)
+
 # Folders Structure
 
 ```
