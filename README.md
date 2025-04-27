@@ -6,16 +6,15 @@ A new Flutter project.
 
 # App Images
 
-![Demo del home](assets/home.png)
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
-![Demo del añadir](assets/add.png)
+  <img src="assets/home.png" alt="Demo del home" width="300"/>
+  <img src="assets/add.png" alt="Demo del añadir" width="300"/>
+  <img src="assets/home_all.png" alt="Demo del home_all" width="300"/>
+  <img src="assets/delete.png" alt="Demo del delete" width="300"/>
+  <img src="assets/completed.png" alt="Demo del completed" width="300"/>
 
-![Demo del añadir](assets/home_all.png)
-
-![Demo del añadir](assets/delete.png)
-
-![Demo del añadir](assets/completed.png)
-
+</div>
 # Folders Structure
 
 ```
