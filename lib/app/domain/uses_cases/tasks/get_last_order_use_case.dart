@@ -1,4 +1,3 @@
-import '../../models/task/task_model.dart';
 import '../../repositories/task_repository.dart';
 
 class GetLastOrderUseCase {
@@ -6,10 +5,8 @@ class GetLastOrderUseCase {
     : _taskRepository = taskRepository;
   final TaskRepository _taskRepository;
 
-  Future<int> call(Task task) async {
+  Future<int> call() async {
     final tasks = await _taskRepository.getTasks();
-    tasks.sort((a, b) => a.order.compareTo(b.order));
-    final lastOrder = tasks.isNotEmpty ? tasks.last.order + 1 : 1;
-    return lastOrder;
+    return tasks.length + 1;
   }
 }

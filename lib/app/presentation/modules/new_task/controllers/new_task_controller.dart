@@ -43,7 +43,7 @@ class NewTaskController extends StateNotifier<NewTaskState> {
   bool get hasTak => state.taskToAdd.id.isNotEmpty;
 
   Future<void> addTask() async {
-    final lastOrder = await _getLastOrderUseCase.call(state.taskToAdd);
+    final lastOrder = await _getLastOrderUseCase.call();
     await _newTaskUseCase.call(
       state.taskToAdd.withGeneratedId().copyWith(order: lastOrder),
     );
