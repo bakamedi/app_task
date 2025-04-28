@@ -7,6 +7,7 @@ class NewTaskUseCase {
   final TaskRepository _taskRepository;
 
   Future<void> call(Task task) async {
+    print(task);
     await _taskRepository.addTask(task);
   }
 }

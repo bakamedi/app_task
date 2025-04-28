@@ -4,7 +4,7 @@ import '../../inject_repository.dart';
 import 'snackbar/set_context_use_case.dart';
 import 'snackbar/show_snackbar_use_case.dart';
 import 'tasks/delete_task_use_case.dart';
-import 'tasks/get_last_order_use_case.dart';
+import 'tasks/get_order_by_tasks_use_case.dart';
 import 'tasks/get_tasks_use_case.dart';
 import 'tasks/new_task_use_case.dart';
 import 'tasks/update_task_use_case.dart';
@@ -39,7 +39,8 @@ class UseCases {
         SetContextUseCase(snackbarRepository: Repositories.snackbarRep.read()),
   );
 
-  static final getLastOrderUseCase = Provider(
-    (ref) => GetLastOrderUseCase(taskRepository: Repositories.taskRep.read()),
+  static final getOrderByTasksUseCase = Provider(
+    (ref) =>
+        GetOrderByTasksUseCase(taskRepository: Repositories.taskRep.read()),
   );
 }
