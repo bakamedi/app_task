@@ -117,7 +117,13 @@ class TaskController extends StateNotifier<TaskState> {
       (task) => task.id == movedTask.id,
     );
 
-    onlyUpdateWith((state) => state.copyWith(all: finalTasks));
+    onlyUpdateWith(
+      (state) => state.copyWith(
+        all: finalTasks,
+        toDo: finalTasks.where((task) => !task.completed).toList(),
+        completed: finalTasks.where((task) => task.completed).toList(),
+      ),
+    );
 
     return updatedMovedTask;
   }
