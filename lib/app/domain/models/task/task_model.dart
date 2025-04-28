@@ -37,6 +37,5 @@ abstract class Task with _$Task {
     createdAt: '',
   );
 
-  static Finder finderFilter() =>
-      Finder(sortOrders: [SortOrder('created_at', false)]);
+  static Finder finderFilter() => Finder(sortOrders: [SortOrder('order')]);
 }

@@ -8,9 +8,10 @@ class GetOrderByTasksUseCase {
 
   Future<Task> call(Task taskToAdd, List<Task> currentTasks) async {
     final List<Task> updatedTasks =
-        currentTasks.map((task) {
-          return task.copyWith(order: task.order + 1);
-        }).toList();
+        currentTasks
+            .map((task) => task.copyWith(order: task.order + 1))
+            .toList();
+
     for (final task in updatedTasks) {
       await _taskRepository.updateTask(task);
     }

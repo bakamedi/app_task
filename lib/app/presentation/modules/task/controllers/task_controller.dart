@@ -90,10 +90,35 @@ class TaskController extends StateNotifier<TaskState> {
     });
   }
 
-  void reorderTasks(int oldIndex, int newIndex) {
-    onlyUpdateWith((state) => state.reorderTasks(oldIndex, newIndex));
+  Task reorderTasks(int oldIndex, int newIndex) {
+    if (newIndex > oldIndex) {
+      newIndex -= 1;
+    }
 
-    // Aquí podrías añadir lógica para persistir el nuevo orden si es necesario
-    // await _someUseCase.reorderTasks(state.all);
+    final List<Task> updatedTasks = [...state.all]; // Copia la lista
+
+    final Task movedTask = updatedTasks.removeAt(oldIndex);
+    updatedTasks.insert(newIndex, movedTask);
+
+    // Actualizar los order en memoria
+    for (int i = 0; i < updatedTasks.length; i++) {
+      updatedTasks[i] = updatedTasks[i].copyWith(order: i);
+    }
+
+    // Actualizar el order
+    final List<Task> finalTasks =
+        updatedTasks.asMap().entries.map((entry) {
+          final index = entry.key;
+          final task = entry.value;
+          return task.copyWith(order: index);
+        }).toList();
+
+    final Task updatedMovedTask = updatedTasks.firstWhere(
+      (task) => task.id == movedTask.id,
+    );
+
+    onlyUpdateWith((state) => state.copyWith(all: finalTasks));
+
+    return updatedMovedTask;
   }
 }

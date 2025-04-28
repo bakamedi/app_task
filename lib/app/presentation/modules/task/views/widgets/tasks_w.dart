@@ -6,6 +6,7 @@ import '../../../../global/widgets/scaffold/main_scaffold_gw.dart';
 import '../../controllers/task_controller.dart';
 import '../../utils/delete_task.dart';
 import '../../utils/go_task.dart';
+import '../../utils/reorder_task.dart';
 import '../../utils/update_completed.dart';
 import 'empty_task_w.dart';
 import 'slidable_task_item_w.dart';
@@ -18,22 +19,11 @@ class TasksW extends ConsumerWidget {
   Widget build(BuildContext context, BuilderRef ref) {
     final primaryColor = Theme.of(context).primaryColor;
 
-    final taskController = ref.watch(taskProvider);
-
     return MainScaffoldGW(
       isEmpty: tasks.isEmpty,
       emptyBody: const EmptyTaskW(),
       body: ReorderableListView.builder(
-        onReorderStart: (index) {
-          print('Start reorder at index: $index');
-        },
-        onReorderEnd: (index) {
-          print('End reorder at index: $index');
-        },
-
-        onReorder: (int oldIndex, int newIndex) {
-          taskController.reorderTasks(oldIndex, newIndex);
-        },
+        onReorder: reorderTask,
         padding: EdgeInsets.zero,
         itemCount: tasks.length,
         itemBuilder: (BuildContext context, int index) {
