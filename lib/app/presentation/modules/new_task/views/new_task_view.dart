@@ -16,8 +16,7 @@ class NewTaskView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: const Color.fromARGB(255, 254, 254, 254)),
-      backgroundColor: const Color.fromARGB(255, 254, 254, 254),
+      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.only(left: 15, right: 15),
         child: Consumer(
@@ -32,7 +31,7 @@ class NewTaskView extends StatelessWidget {
                   TitleGW(
                     title:
                         newTaskController.hasTak ? 'Edition Task' : 'New Task',
-                  ).padding(EdgeInsets.only(left: 15, right: 15)),
+                  ).padding(EdgeInsets.only(left: 15, right: 15, top: 40)),
                   InputTextFieldGW(
                     onChanged: newTaskController.onChangeTitle,
                     initialValue: newTaskController.state.taskToAdd.title,

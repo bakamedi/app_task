@@ -39,6 +39,9 @@ class DeviceLocalProvider {
   Future<String> get completeName async =>
       await _readValue(GlobalNameStorageKeyUtils.COMPLETE_NAME);
 
+  Future<String> get preferences async =>
+      await _readValue(GlobalNameStorageKeyUtils.PREFERENCES);
+
   Future<void> setCompleteName(String completeName) async {
     await _writeValue(GlobalNameStorageKeyUtils.COMPLETE_NAME, completeName);
   }
@@ -53,6 +56,10 @@ class DeviceLocalProvider {
 
   Future<void> setRefreshToken(String token) async {
     await _writeValue(GlobalNameStorageKeyUtils.REFRESH_TOKEN, token);
+  }
+
+  Future<void> setPreference(String preferences) async {
+    await _writeValue(GlobalNameStorageKeyUtils.PREFERENCES, preferences);
   }
 
   Future<void> clearData() async {

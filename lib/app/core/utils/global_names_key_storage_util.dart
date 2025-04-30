@@ -6,4 +6,5 @@ class GlobalNameStorageKeyUtils {
   static String ACCESS_TOKEN = 'ACCESS_TOKEN';
   static String COMPLETE_NAME = 'COMPLETE_NAME';
   static String REFRESH_TOKEN = 'REFRESH_TOKEN';
+  static String PREFERENCES = 'PREFERENCES';
 }

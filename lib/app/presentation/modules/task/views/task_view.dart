@@ -16,7 +16,6 @@ class TaskView extends StatelessWidget {
     snackbarController.setContext(context);
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 254, 254, 254),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../core/adaptative_screen/adaptative_screen.dart';
+import '../core/utils/theme/theme_app.dart';
 import 'global/router/router_gc.dart';
 import 'global/widgets/loader/loader_gw.dart';
 import 'router/router_provider.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routerConfig: routerProvider.read(),
           title: 'Task App',
-          themeMode: ThemeMode.light,
+          darkTheme: ThemeApp.darkTheme,
+          themeMode: ThemeMode.system,
           localizationsDelegates: _getLocalizationsDelegate(),
           supportedLocales: _getSupportedLocales(),
         ),

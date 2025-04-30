@@ -12,11 +12,10 @@ class HeaderTaskW extends SliverPersistentHeaderDelegate {
     bool overlapsContent,
   ) {
     return ColoredBox(
-      color: const Color.fromARGB(255, 254, 254, 254),
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: TabBar(
         labelColor: Theme.of(context).primaryColor,
         unselectedLabelColor: Colors.grey,
-        indicatorColor: Colors.transparent,
         automaticIndicatorColorAdjustment: true,
         indicator: DotIndicator(
           color: Theme.of(context).primaryColor,

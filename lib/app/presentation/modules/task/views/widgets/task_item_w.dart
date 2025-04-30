@@ -14,6 +14,7 @@ class TaskItemW extends StatelessWidget {
     required this.onCheckboxTap,
     required this.order,
   });
+
   final String title;
   final String description;
   final bool completed;
@@ -24,17 +25,20 @@ class TaskItemW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(245, 244, 244, 244),
+          color: theme.cardColor,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.08),
+              color: theme.shadowColor.withValues(alpha: 0.08),
               blurRadius: 10,
               spreadRadius: 2,
               offset: const Offset(0, 4),
@@ -49,7 +53,7 @@ class TaskItemW extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6),
               ),
               onChanged: (_) => onCheckboxTap(),
-              activeColor: Colors.deepPurple,
+              activeColor: colorScheme.primary,
             ),
             12.w,
             Expanded(
@@ -66,19 +70,29 @@ class TaskItemW extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           decoration:
                               completed ? TextDecoration.lineThrough : null,
-                          color: Colors.black,
+                          color: theme.textTheme.bodyLarge?.color,
                         ),
                       ),
                       Text(
                         date.toRelativeTime(),
-                        style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: theme.textTheme.bodySmall?.color?.withValues(
+                            alpha: 0.6,
+                          ),
+                        ),
                       ),
                     ],
                   ),
                   4.h,
                   Text(
                     description,
-                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: theme.textTheme.bodyMedium?.color?.withValues(
+                        alpha: 0.8,
+                      ),
+                    ),
                   ),
                 ],
               ),
