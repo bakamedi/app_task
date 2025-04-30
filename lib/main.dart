@@ -12,7 +12,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  timeago.setLocaleMessages('es', timeago.EsMessages());
+  timeago.setLocaleMessages('en', timeago.EnMessages());
 
   runApp(const MyApp());
 }

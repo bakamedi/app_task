@@ -120,7 +120,7 @@ extension StringExt on String {
       timeago.setLocaleMessages(locale, timeago.EsMessages());
       return timeago.format(date, locale: locale);
     } catch (e) {
-      return 'Fecha inválida';
+      return 'Invalid date';
     }
   }
 }
