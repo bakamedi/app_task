@@ -19,7 +19,7 @@ class EmptyTaskW extends StatelessWidget {
           color: Colors.grey.withValues(alpha: 0.5),
         ),
         Text(
-          'No hay tareas disponibles',
+          'There are no tasks available',
           style: TextStyle(
             color: Colors.grey.withValues(alpha: 0.5),
             fontSize: screen.dp(2),
