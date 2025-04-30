@@ -11,11 +11,11 @@ const String EMAIL_REGEX = r'^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$';
 class PhoneValidator {
   static String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return 'El telefono no puede estar vacio';
+      return 'Phone number cannot be empty';
     } else if (value.length != MAX_PHONE_LENGTH) {
-      return 'Tamaño max de 10';
+      return 'Phone number must be $MAX_PHONE_LENGTH digits';
     } else if (value.contains(RegExp(r'\D'))) {
-      return 'No es un número valido';
+      return 'Invalid phone number';
     } else {
       return null;
     }
@@ -25,9 +25,9 @@ class PhoneValidator {
 class EmailValidator {
   static String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return 'El email no puede estar vacio';
+      return 'Email cannot be empty';
     } else if (!value.isValidEmail) {
-      return 'No es un email valido';
+      return 'Invalid email address';
     } else {
       return null;
     }
@@ -37,9 +37,9 @@ class EmailValidator {
 class PasswordValidator {
   static String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return 'La contraseña no puede estar vacio';
+      return 'Password cannot be empty';
     } else if (value.length < MIN_PASSWORD_LENGTH) {
-      return 'La contraseña debe de tener al menos 6 caracteres';
+      return 'Password must be at least $MIN_PASSWORD_LENGTH characters';
     } else {
       return null;
     }
@@ -49,9 +49,9 @@ class PasswordValidator {
 class ConfirmPasswordValidator {
   static String? validate(String? password, String? confirmPassword) {
     if (confirmPassword == null || confirmPassword.isEmpty) {
-      return 'La confirmación de la contraseña no puede estar vacía';
+      return 'Password confirmation cannot be empty';
     } else if (password != confirmPassword) {
-      return 'Las contraseñas no coinciden';
+      return 'Passwords do not match';
     } else {
       return null;
     }
@@ -61,7 +61,7 @@ class ConfirmPasswordValidator {
 class NamesValidator {
   static String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return 'El nombre no puede estar vacio';
+      return 'Name cannot be empty';
     } else {
       return null;
     }
@@ -70,6 +70,7 @@ class NamesValidator {
 
 abstract class UserValidator {
   UserValidator._();
+
   static String? validatePhoneNumber(String? value) {
     return PhoneValidator.validate(value);
   }

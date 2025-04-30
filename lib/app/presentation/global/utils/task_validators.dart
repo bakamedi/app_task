@@ -1,18 +1,17 @@
 abstract class TaskValidators {
   TaskValidators._();
 
-  // Constantes de validación
+  // Validation constants
   static const int maxTitleLength = 50;
   static const int maxDescriptionLength = 200;
 
-  static const String emptyTitleError = 'El título no puede estar vacío';
+  static const String emptyTitleError = 'Title cannot be empty';
   static const String longTitleError =
-      'El título no puede tener más de $maxTitleLength caracteres';
+      'Title cannot be longer than $maxTitleLength characters';
 
-  static const String emptyDescriptionError =
-      'La descripción no puede estar vacía';
+  static const String emptyDescriptionError = 'Description cannot be empty';
   static const String longDescriptionError =
-      'La descripción no puede tener más de $maxDescriptionLength caracteres';
+      'Description cannot be longer than $maxDescriptionLength characters';
 
   static String? validateTitle(String? value) {
     if (value == null || value.trim().isEmpty) {
