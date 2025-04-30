@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../../../../domain/models/task/task_model.dart';
+import '../../../../global/extensions/strings_ext.dart';
 import '../../../../global/widgets/slidable/slidable_gw.dart';
 import 'task_item_w.dart';
 
@@ -40,6 +41,7 @@ class SlidableTaskItemW extends StatelessWidget {
         title: task.title,
         description: task.description,
         completed: task.completed,
+        date: task.createdAt,
         order: task.order,
         onTap: () => goTask(task),
         onCheckboxTap: () => updateCompleted(task),

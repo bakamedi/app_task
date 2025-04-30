@@ -18,7 +18,7 @@ abstract class NewTaskState with _$NewTaskState {
         description: '',
         completed: false,
         createdAt: '',
-        order: 1,
+        order: 0,
       ),
     )
     Task taskToAdd,

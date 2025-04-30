@@ -33,7 +33,7 @@ abstract class Task with _$Task {
     title: '',
     description: '',
     completed: false,
-    order: 1,
+    order: 0,
     createdAt: '',
   );
 
