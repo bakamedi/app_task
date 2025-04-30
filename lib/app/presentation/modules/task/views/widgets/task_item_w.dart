@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../global/extensions/strings_ext.dart';
 import '../../../../global/extensions/widgets_ext.dart';
 
 class TaskItemW extends StatelessWidget {
@@ -8,12 +9,16 @@ class TaskItemW extends StatelessWidget {
     required this.title,
     required this.description,
     required this.completed,
+    required this.date,
     required this.onTap,
     required this.onCheckboxTap,
+    required this.order,
   });
   final String title;
   final String description;
   final bool completed;
+  final String date;
+  final int order;
   final VoidCallback onTap;
   final VoidCallback onCheckboxTap;
 
@@ -22,7 +27,7 @@ class TaskItemW extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(top: 16, left: 20, right: 20),
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: const Color.fromARGB(245, 244, 244, 244),
@@ -51,16 +56,26 @@ class TaskItemW extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      decoration: completed ? TextDecoration.lineThrough : null,
-                      color: Colors.black,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          decoration:
+                              completed ? TextDecoration.lineThrough : null,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        date.toRelativeTime(),
+                        style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 4),
+                  4.h,
                   Text(
                     description,
                     style: TextStyle(fontSize: 14, color: Colors.grey[600]),

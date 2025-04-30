@@ -53,7 +53,7 @@ dependencies:
   encrypt: ^5.0.3
   crypto: ^3.0.6
   flutter_slidable: ^4.0.0
-
+  timeago: ^3.7.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:timeago/timeago.dart' as timeago;
+
 import 'package:intl/intl.dart';
 
 extension StringExt on String {
@@ -110,5 +112,15 @@ extension StringExt on String {
     return parsedDate.year == now.year &&
         parsedDate.month == now.month &&
         parsedDate.day == now.day;
+  }
+
+  String toRelativeTime({String locale = 'en'}) {
+    try {
+      final date = DateTime.parse(this);
+      timeago.setLocaleMessages(locale, timeago.EsMessages());
+      return timeago.format(date, locale: locale);
+    } catch (e) {
+      return 'Invalid date';
+    }
   }
 }

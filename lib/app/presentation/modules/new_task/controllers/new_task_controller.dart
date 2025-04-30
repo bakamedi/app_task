@@ -4,6 +4,7 @@ import 'package:flutter_meedu/notifiers.dart';
 
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../domain/uses_cases/tasks/delete_task_use_case.dart';
+import '../../../../domain/uses_cases/tasks/get_order_by_tasks_use_case.dart';
 import '../../../../domain/uses_cases/tasks/new_task_use_case.dart';
 import '../../../../domain/uses_cases/tasks/update_task_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
@@ -17,6 +18,7 @@ final newTaskProvider = Provider.state<NewTaskController, NewTaskState>(
     newTaskUseCase: UseCases.newTaskUseCase.read(),
     updateTaskUseCase: UseCases.updateTaskUseCase.read(),
     deleteTaskUseCase: UseCases.deleteTaskUseCase.read(),
+    getOrderByTasksUseCase: UseCases.getOrderByTasksUseCase.read(),
   ),
 );
 
@@ -26,19 +28,26 @@ class NewTaskController extends StateNotifier<NewTaskState> {
     required NewTaskUseCase newTaskUseCase,
     required UpdateTaskUseCase updateTaskUseCase,
     required DeleteTaskUseCase deleteTaskUseCase,
+    required GetOrderByTasksUseCase getOrderByTasksUseCase,
   }) : _newTaskUseCase = newTaskUseCase,
        _updateTaskUseCase = updateTaskUseCase,
-       _deleteTaskUseCase = deleteTaskUseCase;
+       _deleteTaskUseCase = deleteTaskUseCase,
+       _getOrderByTasksUseCase = getOrderByTasksUseCase;
 
   final NewTaskUseCase _newTaskUseCase;
   final UpdateTaskUseCase _updateTaskUseCase;
   final DeleteTaskUseCase _deleteTaskUseCase;
+  final GetOrderByTasksUseCase _getOrderByTasksUseCase;
 
   GlobalKey<FormState>? get formTaskKey => state.formTaskKey;
   bool get hasTak => state.taskToAdd.id.isNotEmpty;
 
-  Future<void> addTask() async {
-    await _newTaskUseCase.call(state.taskToAdd.withGeneratedId());
+  Future<void> addTask(List<Task> tasks) async {
+    final taskByOrder = await _getOrderByTasksUseCase.call(
+      state.taskToAdd,
+      tasks,
+    );
+    await _newTaskUseCase.call(taskByOrder.withGeneratedId());
   }
 
   void onChangeTitle(String? title) {

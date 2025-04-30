@@ -13,7 +13,9 @@ void addTask() async {
     return;
   }
 
-  await newTaskController.addTask();
+  final tasks = taskController.all;
+
+  await newTaskController.addTask(tasks);
   RouterUtil.pop();
   snackbarGC.show('Added task successfully');
   taskController.init();
