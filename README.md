@@ -22,11 +22,28 @@ $ flutter run
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
-  <img src="assets/home.png" alt="Demo del home" width="300"/>
-  <img src="assets/add.png" alt="Demo del añadir" width="300"/>
-  <img src="assets/home_all.png" alt="Demo del home_all" width="300"/>
-  <img src="assets/delete.png" alt="Demo del delete" width="300"/>
-  <img src="assets/completed.png" alt="Demo del completed" width="300"/>
+  <img src="assets/home.png" alt="Demo del home" width="250"/>
+  <img src="assets/add.png" alt="Demo del añadir" width="250"/>
+  <img src="assets/home_all.png" alt="Demo del home_all" width="250"/>
+  <img src="assets/delete.png" alt="Demo del delete" width="250"/>
+  <img src="assets/completed.png" alt="Demo del completed" width="250"/>
+  <img src="assets/completed.png" alt="Demo del completed" width="250"/>
+
+</div>
+
+## Dark Mode
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+
+  <img src="assets/darkmode.png" alt="Demo del completed" width="250"/>
+
+</div>
+
+## Drag and Drop
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+
+  <img src="assets/demo.gif" alt="Demo del completed" width="250"/>
 
 </div>
 
