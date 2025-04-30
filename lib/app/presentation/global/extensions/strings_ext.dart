@@ -117,7 +117,6 @@ extension StringExt on String {
   String toRelativeTime({String locale = 'en'}) {
     try {
       final date = DateTime.parse(this);
-      timeago.setLocaleMessages(locale, timeago.EsMessages());
       return timeago.format(date, locale: locale);
     } catch (e) {
       return 'Invalid date';
