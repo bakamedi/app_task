@@ -16,7 +16,9 @@ class NewTaskView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      ),
       body: Padding(
         padding: EdgeInsets.only(left: 15, right: 15),
         child: Consumer(
