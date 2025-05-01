@@ -1,18 +1,8 @@
 import 'package:flutter_meedu/providers.dart';
 
-import 'core/injects_providers/db/db_inject_provider.dart';
-import 'core/injects_providers/storage/storage_inject_provider.dart';
-import 'core/injects_providers/task/task_inject_provider.dart';
-import 'data/repositories_impl/db_repository_impl.dart';
-import 'data/repositories_impl/router_repository_impl.dart';
-import 'data/repositories_impl/snackbar_repository_impl.dart';
-import 'data/repositories_impl/task_repository_impl.dart';
-import 'data/repositories_impl/user_preferences_repository_impl.dart';
-import 'domain/repositories/db_repository.dart';
-import 'domain/repositories/router_repository.dart';
-import 'domain/repositories/snackbar_repository.dart';
-import 'domain/repositories/task_repository.dart';
-import 'domain/repositories/user_preferences_repository.dart';
+import 'core/injects_providers/index_injects_providers.dart';
+import 'data/repositories_impl/index_repositories_impl.dart';
+import 'domain/repositories/index_repositories.dart';
 
 class Repositories {
   Repositories._();
