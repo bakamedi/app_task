@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routerConfig: routerProvider.read(),
           title: 'Task App',
+          theme: ThemeApp.lightTheme,
           darkTheme: ThemeApp.darkTheme,
           themeMode: ThemeMode.system,
           localizationsDelegates: _getLocalizationsDelegate(),
