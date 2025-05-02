@@ -40,7 +40,7 @@ class NewTaskController extends StateNotifier<NewTaskState> {
   final GetOrderByTasksUseCase _getOrderByTasksUseCase;
 
   GlobalKey<FormState>? get formTaskKey => state.formTaskKey;
-  bool get hasTak => state.taskToAdd.id.isNotEmpty;
+  bool get hasTask => state.taskToAdd.id.isNotEmpty;
 
   Future<void> addTask(List<Task> tasks) async {
     final taskByOrder = await _getOrderByTasksUseCase.call(

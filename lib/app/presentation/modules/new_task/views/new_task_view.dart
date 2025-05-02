@@ -32,7 +32,7 @@ class NewTaskView extends StatelessWidget {
                 children: [
                   TitleGW(
                     title:
-                        newTaskController.hasTak ? 'Edition Task' : 'New Task',
+                        newTaskController.hasTask ? 'Edition Task' : 'New Task',
                   ).padding(EdgeInsets.only(left: 15, right: 15, top: 40)),
                   InputTextFieldGW(
                     onChanged: newTaskController.onChangeTitle,
@@ -69,11 +69,11 @@ class NewTaskView extends StatelessWidget {
                   1.h.expanded,
                   PrimaryButton(
                     onPressed:
-                        newTaskController.hasTak
+                        newTaskController.hasTask
                             ? () => updateTask()
                             : () => addTask(),
                     padding: EdgeInsets.only(bottom: 50),
-                    label: newTaskController.hasTak ? 'Edit Task' : 'Add Task',
+                    label: newTaskController.hasTask ? 'Edit Task' : 'Add Task',
                   ),
                 ],
               ),
