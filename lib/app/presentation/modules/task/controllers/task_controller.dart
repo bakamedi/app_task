@@ -2,7 +2,7 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
 import '../../../../domain/models/task/task_model.dart';
-import '../../../../domain/uses_cases/tasks/get_tasks_use_case.dart';
+import '../../../../domain/uses_cases/tasks/gets/get_tasks_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
 import '../../../global/extensions/copy_with_updater_ext.dart';
 import 'task_state.dart';

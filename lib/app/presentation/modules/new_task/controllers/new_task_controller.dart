@@ -3,10 +3,10 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
 import '../../../../domain/models/task/task_model.dart';
-import '../../../../domain/uses_cases/tasks/delete_task_use_case.dart';
-import '../../../../domain/uses_cases/tasks/get_order_by_tasks_use_case.dart';
-import '../../../../domain/uses_cases/tasks/new_task_use_case.dart';
-import '../../../../domain/uses_cases/tasks/update_task_use_case.dart';
+import '../../../../domain/uses_cases/tasks/delete/delete_task_use_case.dart';
+import '../../../../domain/uses_cases/tasks/gets/get_order_by_tasks_use_case.dart';
+import '../../../../domain/uses_cases/tasks/new/new_task_use_case.dart';
+import '../../../../domain/uses_cases/tasks/update/update_task_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
 import '../../../global/extensions/copy_with_updater_ext.dart';
 import '../../../global/extensions/task_ext.dart';

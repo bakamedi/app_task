@@ -1,10 +1,10 @@
 export '../../inject_repository.dart';
 export 'snackbar/set_context_use_case.dart';
 export 'snackbar/show_snackbar_use_case.dart';
-export 'tasks/delete_task_use_case.dart';
-export 'tasks/get_order_by_tasks_use_case.dart';
-export 'tasks/get_tasks_use_case.dart';
-export 'tasks/new_task_use_case.dart';
-export 'tasks/update_task_use_case.dart';
+export 'tasks/delete/delete_task_use_case.dart';
+export 'tasks/gets/get_order_by_tasks_use_case.dart';
+export 'tasks/gets/get_tasks_use_case.dart';
+export 'tasks/new/new_task_use_case.dart';
+export 'tasks/update/update_task_use_case.dart';
 export 'user_preferences/get_user_preferences_use_case.dart';
 export 'user_preferences/save_user_preferences_use_case.dart';

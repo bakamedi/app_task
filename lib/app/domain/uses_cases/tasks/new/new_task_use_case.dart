@@ -1,5 +1,5 @@
-import '../../models/task/task_model.dart';
-import '../../repositories/task_repository.dart';
+import '../../../models/task/task_model.dart';
+import '../../../repositories/task_repository.dart';
 
 class NewTaskUseCase {
   NewTaskUseCase({required TaskRepository taskRepository})

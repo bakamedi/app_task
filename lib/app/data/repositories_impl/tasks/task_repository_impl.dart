@@ -1,6 +1,6 @@
-import '../../domain/models/task/task_model.dart';
-import '../../domain/repositories/task_repository.dart';
-import '../source/providers/tasks/task_provider.dart';
+import '../../../domain/models/task/task_model.dart';
+import '../../../domain/repositories/task_repository.dart';
+import '../../source/providers/tasks/task_provider.dart';
 
 class TaskRepositoryImpl implements TaskRepository {
   TaskRepositoryImpl({required TaskProvider taskProvider})
