@@ -18,6 +18,12 @@ $ dart run build_runner build -d --delete-conflicting-outputs
 $ flutter run
 ```
 
+## Test
+
+```bash
+$ flutter test
+```
+
 # App Images
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
@@ -90,4 +96,8 @@ lib/                            # Código fuente principal de la aplicación Flu
     ├── my_app.dart             # Widget raíz de la aplicación (MaterialApp, temas, etc.)
     ├── inject_repository.dart  # Inyección de dependencias para los repositorios
     └── main.dart               # Punto de entrada principal de la aplicación
+test/                           # Código fuente para las pruebas unitarias
+└── app/                        # Pruebas relacionadas con la lógica de la aplicación
+    ├── uses_cases/             # Pruebas para los casos de uso (use cases)
+    │   ├── tasks/              # Pruebas específicas de los casos de uso relacionados con tareas
 ```
