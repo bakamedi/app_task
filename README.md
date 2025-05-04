@@ -4,7 +4,7 @@ A new Flutter project with sembast as database.
 
 # Getting Started
 
-## Prerequisitos
+## Prerequisites
 
 - [Flutter](https://docs.flutter.dev/get-started/install) (>= 3.x.x)
 - Un emulador o dispositivo físico (iOS o Android)
