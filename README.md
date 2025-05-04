@@ -1,6 +1,6 @@
 # App Task
 
-A new Flutter project.
+A new Flutter project with sembast as database.
 
 # Getting Started
 
