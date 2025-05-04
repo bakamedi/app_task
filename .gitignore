@@ -58,3 +58,6 @@ app.*.map.json
 .env_prod
 .env_dev
 .env_qa
+.env.production
+.env.staging
+.env.development

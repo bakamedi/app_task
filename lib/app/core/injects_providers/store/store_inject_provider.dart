@@ -1,6 +1,7 @@
 import 'package:flutter_meedu/providers.dart';
 
 import '../../../data/source/providers/store/store_provider.dart';
+import '../../config/env.dart';
 import '../db/db_inject_provider.dart';
 import '../loggers/logger_inject_provider.dart';
 
@@ -10,7 +11,7 @@ class StoreInjectProvider {
   static final storeInjectProvider = Provider(
     (ref) => StoreProvider(
       dbProvider: DbInjectProvider.dbInjectProvider.read(),
-      storeName: 'my_store',
+      storeName: Env.storeName,
       logger: LoggerInjectProvider.loggerInjectProvider.read(),
     ),
   );
