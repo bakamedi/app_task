@@ -2,13 +2,15 @@ import '../../../global/controllers/snackbar/snackbar_gc.dart';
 import '../../../global/utils/router_util.dart';
 import '../controllers/new_task_controller.dart';
 import '../../task/controllers/task_controller.dart';
+import '../controllers/ui/new_task_ui_controller.dart';
 
 void addTask() async {
-  final taskController = taskProvider.read();
-  final newTaskController = newTaskProvider.read();
-  final snackbarGC = snackbarGP.read();
+  final TaskController taskController = taskProvider.read();
+  final NewTaskUIController newTaskUIController = newTaskUIProvider.read();
+  final NewTaskController newTaskController = newTaskProvider.read();
+  final SnackbarGC snackbarGC = snackbarGP.read();
 
-  final isValid = newTaskController.formTaskKey!.currentState!.validate();
+  final isValid = newTaskUIController.formTaskKey!.currentState!.validate();
   if (!isValid) {
     return;
   }

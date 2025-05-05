@@ -2,6 +2,7 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
 import '../../../../domain/models/task/task_model.dart';
+import '../../../../domain/models/task/task_classifier.dart';
 import '../../../../domain/uses_cases/tasks/gets/get_tasks_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
 import '../../../global/extensions/copy_with_updater_ext.dart';
@@ -27,104 +28,79 @@ class TaskController extends StateNotifier<TaskState> {
   List<Task> get completedTasks => state.completed;
   List<Task> get all => state.all;
 
-  /// Inicializa el estado trayendo las tareas
+  /// Inicializa el estado trayendo las tareas desde el caso de uso `getTasksUseCase`
+  /// y clasifica las tareas en pendientes y completadas.
   Future<void> init() async {
-    final tasks = await _getTasksUseCase.call();
+    final tasks =
+        await _getTasksUseCase.call(); // Obtiene las tareas desde el backend
+    final classified = TaskClassifier.from(
+      tasks,
+    ); // Clasifica las tareas en pendientes y completadas
+
+    // Actualiza el estado con las tareas clasificadas
     onlyUpdateWith(
       (state) => state.copyWith(
-        all: tasks,
-        toDo: tasks.where((task) => !task.completed).toList(),
-        completed: tasks.where((task) => task.completed).toList(),
+        all: classified.all,
+        toDo: classified.toDo,
+        completed: classified.completed,
       ),
     );
   }
 
-  /// Cambiar el estado de completado de una tarea
+  /// Cambia el estado de completado de una tarea.
+  /// Actualiza la tarea y la coloca en la lista correspondiente (pendientes o completadas).
   void onChangeCompleted(Task task) {
-    final updatedTask = task.copyWith(completed: !task.completed);
+    final updatedTask = task.copyWith(
+      completed: !task.completed,
+    ); // Cambia el estado de 'completed'
+    final classified = TaskClassifier.from(
+      state.all,
+    ).updateTask(updatedTask); // Actualiza la lista de tareas
 
-    // Quitar la tarea de sus listas actuales
-    final updatedToDo = List<Task>.from(state.toDo)
-      ..removeWhere((t) => t.id == task.id);
-    final updatedCompleted = List<Task>.from(state.completed)
-      ..removeWhere((t) => t.id == task.id);
-
-    // Actualizar lista completa
-    final updatedAll =
-        state.all.map((t) {
-          return t.id == task.id ? updatedTask : t;
-        }).toList();
-
-    // Añadir la tarea a la lista correspondiente
-    if (updatedTask.completed) {
-      updatedCompleted.add(updatedTask);
-    } else {
-      updatedToDo.add(updatedTask);
-    }
-
+    // Actualiza el estado con las nuevas listas
     onlyUpdateWith(
       (state) => state.copyWith(
-        toDo: updatedToDo,
-        completed: updatedCompleted,
-        all: updatedAll,
+        all: classified.all,
+        toDo: classified.toDo,
+        completed: classified.completed,
       ),
     );
   }
 
-  /// Borrar una tarea
+  /// Elimina una tarea de las listas correspondientes.
+  /// Elimina la tarea de todas las listas: pendientes, completadas y todas.
   void deleteTask(Task task) {
-    final isCompleted = task.completed;
+    final classified = TaskClassifier.from(
+      state.all,
+    ).deleteTask(task); // Elimina la tarea
 
-    onlyUpdateWith((state) {
-      return state.copyWith(
-        all: state.all.where((t) => t.id != task.id).toList(),
-        toDo:
-            isCompleted
-                ? state.toDo
-                : state.toDo.where((t) => t.id != task.id).toList(),
-        completed:
-            isCompleted
-                ? state.completed.where((t) => t.id != task.id).toList()
-                : state.completed,
-      );
-    });
-  }
-
-  Task reorderTasks(int oldIndex, int newIndex) {
-    if (newIndex > oldIndex) {
-      newIndex -= 1;
-    }
-
-    final List<Task> updatedTasks = [...state.all]; // Copia la lista
-
-    final Task movedTask = updatedTasks.removeAt(oldIndex);
-    updatedTasks.insert(newIndex, movedTask);
-
-    // Actualizar los order en memoria
-    for (int i = 0; i < updatedTasks.length; i++) {
-      updatedTasks[i] = updatedTasks[i].copyWith(order: i);
-    }
-
-    // Actualizar el order
-    final List<Task> finalTasks =
-        updatedTasks.asMap().entries.map((entry) {
-          final index = entry.key;
-          final task = entry.value;
-          return task.copyWith(order: index);
-        }).toList();
-
-    final Task updatedMovedTask = updatedTasks.firstWhere(
-      (task) => task.id == movedTask.id,
-    );
-
+    // Actualiza el estado con las nuevas listas sin la tarea eliminada
     onlyUpdateWith(
       (state) => state.copyWith(
-        all: finalTasks,
-        toDo: finalTasks.where((task) => !task.completed).toList(),
-        completed: finalTasks.where((task) => task.completed).toList(),
+        all: classified.all,
+        toDo: classified.toDo,
+        completed: classified.completed,
+      ),
+    );
+  }
+
+  /// Reordena las tareas, moviendo una tarea de una posición a otra.
+  /// Actualiza el estado con las tareas reordenadas y retorna la tarea que fue movida.
+  Task reorderTasks(int oldIndex, int newIndex) {
+    final classified = TaskClassifier.from(
+      state.all,
+    ).reorderTasks(oldIndex, newIndex); // Reordena las tareas
+
+    // Actualiza el estado con las tareas reordenadas
+    onlyUpdateWith(
+      (state) => state.copyWith(
+        all: classified.all,
+        toDo: classified.toDo,
+        completed: classified.completed,
       ),
     );
 
-    return updatedMovedTask;
+    // Retorna la tarea que fue movida
+    return classified.all.firstWhere((task) => task.order == newIndex);
   }
 }

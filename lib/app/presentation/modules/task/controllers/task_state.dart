@@ -33,4 +33,15 @@ abstract class TaskState with _$TaskState {
       completed: updatedAll.where((task) => task.completed).toList(),
     );
   }
+
+  TaskState updateWithAll(List<Task> newAll) {
+    final toDo = <Task>[];
+    final completed = <Task>[];
+
+    for (final task in newAll) {
+      (task.completed ? completed : toDo).add(task);
+    }
+
+    return copyWith(all: newAll, toDo: toDo, completed: completed);
+  }
 }

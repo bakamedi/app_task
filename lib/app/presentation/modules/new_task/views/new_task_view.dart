@@ -6,6 +6,7 @@ import '../../../global/utils/task_validators.dart';
 import '../../../global/widgets/btns/primary_btn.dart';
 import '../../../global/widgets/inputs/input_text_gw.dart';
 import '../../../global/widgets/titles/title_gw.dart';
+import '../controllers/ui/new_task_ui_controller.dart';
 import '../utils/add_task.dart';
 import '../controllers/new_task_controller.dart';
 import '../utils/update_task.dart';
@@ -24,8 +25,9 @@ class NewTaskView extends StatelessWidget {
         child: Consumer(
           builder: (_, ref, __) {
             final newTaskController = ref.watch(newTaskProvider);
+            final newTaskUIController = ref.watch(newTaskUIProvider);
             return Form(
-              key: newTaskController.formTaskKey,
+              key: newTaskUIController.formTaskKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

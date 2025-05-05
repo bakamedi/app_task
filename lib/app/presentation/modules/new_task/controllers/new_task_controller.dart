@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
@@ -39,7 +38,6 @@ class NewTaskController extends StateNotifier<NewTaskState> {
   final DeleteTaskUseCase _deleteTaskUseCase;
   final GetOrderByTasksUseCase _getOrderByTasksUseCase;
 
-  GlobalKey<FormState>? get formTaskKey => state.formTaskKey;
   bool get hasTask => state.taskToAdd.id.isNotEmpty;
 
   Future<void> addTask(List<Task> tasks) async {
