@@ -1,4 +1,4 @@
-import 'task_model.dart';
+import '../../models/task/task_model.dart';
 
 class TaskClassifier {
   factory TaskClassifier.from(List<Task> tasks) {

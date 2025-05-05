@@ -1,4 +1,3 @@
-export '../../inject_repository.dart';
 export 'snackbar/set_context_use_case.dart';
 export 'snackbar/show_snackbar_use_case.dart';
 export 'tasks/delete/delete_task_use_case.dart';

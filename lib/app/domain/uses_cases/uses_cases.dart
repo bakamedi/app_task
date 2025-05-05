@@ -1,5 +1,6 @@
 import 'package:flutter_meedu/providers.dart';
 
+import '../../inject_repository.dart';
 import 'index_uses_cases.dart';
 
 class UseCases {
