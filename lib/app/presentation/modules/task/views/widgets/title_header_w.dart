@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../global/l10n_gen/generated/s.dart';
 import '../../../../global/utils/router_util.dart';
 import '../../../../global/widgets/titles/title_gw.dart';
 import '../../../../router/app_routes/new_task_route.dart';
@@ -17,7 +18,7 @@ class TitleHeaderW extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TitleGW(title: 'My Tasks'),
+          TitleGW(title: AppLocalizations.of(context).appName),
           InkWell(
             onTap: () {
               // acción del botón

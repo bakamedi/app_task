@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../core/adaptative_screen/adaptative_screen.dart';
+import '../core/l10n/l10n_languages.dart';
 import '../core/utils/theme/theme_app.dart';
+import 'global/l10n_gen/generated/s.dart';
 import 'global/router/router_gc.dart';
 import 'global/widgets/loader/loader_gw.dart';
 import 'router/router_provider.dart';
@@ -23,12 +25,12 @@ class MyApp extends StatelessWidget {
         MaterialApp.router(
           debugShowCheckedModeBanner: false,
           routerConfig: routerProvider.read(),
-          title: 'Task App',
           theme: ThemeApp.lightTheme,
           darkTheme: ThemeApp.darkTheme,
           themeMode: ThemeMode.system,
           localizationsDelegates: _getLocalizationsDelegate(),
-          supportedLocales: _getSupportedLocales(),
+          supportedLocales: L10nLanguages.all,
+          title: 'Task App',
         ),
         LoaderGW(adaptativeScreen: adaptativeScreen),
       ],
@@ -37,17 +39,11 @@ class MyApp extends StatelessWidget {
 
   Iterable<LocalizationsDelegate<dynamic>>? _getLocalizationsDelegate() {
     return [
+      AppLocalizations.delegate,
       GlobalMaterialLocalizations.delegate,
       GlobalWidgetsLocalizations.delegate,
       GlobalCupertinoLocalizations.delegate,
       DefaultWidgetsLocalizations.delegate,
-    ];
-  }
-
-  Iterable<Locale> _getSupportedLocales() {
-    return [
-      const Locale('en'), // Inglés
-      const Locale('es'), // Español
     ];
   }
 }
