@@ -12,7 +12,7 @@ final routerGP = Provider.state<RouterGC, RouterState>(
 class RouterGC extends StateNotifier<RouterState> {
   RouterGC(super.initialState);
 
-  void setRouter(GoRouter router) {
+  void load(GoRouter router) {
     onlyUpdate(state = state.copyWith(router: router));
   }
 

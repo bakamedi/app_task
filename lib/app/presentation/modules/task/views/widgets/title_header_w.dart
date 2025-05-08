@@ -18,7 +18,7 @@ class TitleHeaderW extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TitleGW(title: AppLocalizations.of(context).appName),
+          TitleGW(title: AppLocalizations.of(context).title),
           InkWell(
             onTap: () {
               // acción del botón

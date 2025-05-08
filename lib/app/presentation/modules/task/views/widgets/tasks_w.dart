@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
 import '../../../../../domain/models/task/task_model.dart';
+import '../../../../global/l10n_gen/generated/s.dart';
 import '../../../../global/widgets/scaffold/main_scaffold_gw.dart';
 import '../../utils/delete_task.dart';
 import '../../utils/go_task.dart';
@@ -16,6 +17,8 @@ class TasksW extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, BuilderRef ref) {
+    final appLocale = AppLocalizations.of(context);
+
     final primaryColor = Theme.of(context).primaryColor;
 
     return MainScaffoldGW(
@@ -30,7 +33,7 @@ class TasksW extends ConsumerWidget {
           return SlidableTaskItemW(
             key: ValueKey(task.id),
             task: task,
-            deleteTask: (task) => deleteTask(task),
+            deleteTask: (task) => deleteTask(task, appLocale: appLocale),
             goTask: (task) => goTask(task),
             updateCompleted: (task) => updateCompleted(task),
           );

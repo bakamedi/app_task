@@ -1,10 +1,11 @@
 import '../../../global/controllers/snackbar/snackbar_gc.dart';
+import '../../../global/l10n_gen/generated/s.dart';
 import '../../../global/utils/router_util.dart';
 import '../../task/controllers/task_controller.dart';
 import '../controllers/new_task_controller.dart';
 import '../controllers/ui/new_task_ui_controller.dart';
 
-void updateTask() async {
+void updateTask(AppLocalizations appLocale) async {
   final TaskController taskController = taskProvider.read();
   final NewTaskUIController newTaskUIController = newTaskUIProvider.read();
   final NewTaskController newTaskController = newTaskProvider.read();
@@ -18,7 +19,7 @@ void updateTask() async {
   await newTaskController.updateTask(updTask);
 
   RouterUtil.pop();
-  snackbarGC.show('Updated task successfully');
+  snackbarGC.show(appLocale.updateTask);
 
   taskController.init();
 }

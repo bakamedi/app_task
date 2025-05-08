@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
 import '../../../global/extensions/widgets_ext.dart';
+import '../../../global/l10n_gen/generated/s.dart';
 import '../../../global/utils/task_validators.dart';
 import '../../../global/widgets/btns/primary_btn.dart';
 import '../../../global/widgets/inputs/input_text_gw.dart';
@@ -16,6 +17,8 @@ class NewTaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocale = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -34,13 +37,15 @@ class NewTaskView extends StatelessWidget {
                 children: [
                   TitleGW(
                     title:
-                        newTaskController.hasTask ? 'Edition Task' : 'New Task',
+                        newTaskController.hasTask
+                            ? appLocale.editTask
+                            : appLocale.taskTitle,
                   ).padding(EdgeInsets.only(left: 15, right: 15, top: 40)),
                   InputTextFieldGW(
                     onChanged: newTaskController.onChangeTitle,
                     initialValue: newTaskController.state.taskToAdd.title,
-                    labelTxt: 'Task Title',
-                    backgroundLabel: 'Enter task title',
+                    labelTxt: '',
+                    backgroundLabel: AppLocalizations.of(context).taskTitle,
                     margin: EdgeInsets.only(top: 20),
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     textAlign: TextAlign.start,
@@ -55,8 +60,9 @@ class NewTaskView extends StatelessWidget {
                   InputTextFieldGW(
                     onChanged: newTaskController.onChangeDescription,
                     initialValue: newTaskController.state.taskToAdd.description,
-                    labelTxt: 'Task Description',
-                    backgroundLabel: 'Enter task description',
+                    labelTxt: '',
+                    backgroundLabel:
+                        AppLocalizations.of(context).taskDescription,
                     margin: EdgeInsets.only(top: 20),
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     textAlign: TextAlign.start,
@@ -72,10 +78,13 @@ class NewTaskView extends StatelessWidget {
                   PrimaryButton(
                     onPressed:
                         newTaskController.hasTask
-                            ? () => updateTask()
-                            : () => addTask(),
+                            ? () => updateTask(appLocale)
+                            : () => addTask(appLocale),
                     padding: EdgeInsets.only(bottom: 50),
-                    label: newTaskController.hasTask ? 'Edit Task' : 'Add Task',
+                    label:
+                        newTaskController.hasTask
+                            ? appLocale.editTask
+                            : appLocale.addTask,
                   ),
                 ],
               ),

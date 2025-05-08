@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     final adaptativeScreen = AdaptativeScreen(context);
     final RouterGC routerController = routerGP.read();
 
-    routerController.setRouter(routerProvider.read());
+    routerController.load(routerProvider.read());
 
     return Stack(
       alignment: Alignment.center,

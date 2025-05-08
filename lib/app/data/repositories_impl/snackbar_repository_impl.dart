@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../domain/repositories/snackbar_repository.dart';
 
-class SnackbarRepositoryImpl implements SnackbarRepository {
+class SnackbarRepositoryImpl extends SnackbarRepository {
   late BuildContext _context;
 
   @override

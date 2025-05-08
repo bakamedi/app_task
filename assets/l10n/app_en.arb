@@ -1,5 +1,17 @@
 {
   "@@locale": "en",
   "appName": "Task App",
-  "hello": "Hello"
+  "title": "My Tasks",
+  "all": "All",
+  "completed": "Completed",
+  "pending": "To Do",
+  "addTask": "Add Task",
+  "taskTitle": "Task Title",
+  "taskDescription": "Task Description",
+  "newTask": "New Task",
+  "editTask": "Edit Task",
+  "delete": "Delete",
+  "doneTask": "Added task successfully",
+  "updateTask": "Updated task successfully",
+  "deleteTask": "Deleted task successfully"
 }

@@ -21,7 +21,7 @@ class HeaderTaskW extends SliverPersistentHeaderDelegate {
           color: Theme.of(context).primaryColor,
           radius: 3,
         ),
-        tabs: taskTabs,
+        tabs: taskTabs(context),
       ),
     );
   }

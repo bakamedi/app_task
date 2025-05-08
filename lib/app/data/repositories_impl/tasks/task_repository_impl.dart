@@ -2,7 +2,7 @@ import '../../../domain/models/task/task_model.dart';
 import '../../../domain/repositories/task_repository.dart';
 import '../../source/providers/tasks/task_provider.dart';
 
-class TaskRepositoryImpl implements TaskRepository {
+class TaskRepositoryImpl extends TaskRepository {
   TaskRepositoryImpl({required TaskProvider taskProvider})
     : _taskProvider = taskProvider;
   final TaskProvider _taskProvider;

@@ -12,5 +12,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'Task App';
 
   @override
-  String get hello => 'Hello';
+  String get title => 'My Tasks';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get completed => 'Completed';
+
+  @override
+  String get pending => 'To Do';
+
+  @override
+  String get addTask => 'Add Task';
+
+  @override
+  String get taskTitle => 'Task Title';
+
+  @override
+  String get taskDescription => 'Task Description';
+
+  @override
+  String get newTask => 'New Task';
+
+  @override
+  String get editTask => 'Edit Task';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get doneTask => 'Added task successfully';
+
+  @override
+  String get updateTask => 'Updated task successfully';
+
+  @override
+  String get deleteTask => 'Deleted task successfully';
 }

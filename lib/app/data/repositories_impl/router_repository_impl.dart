@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../domain/repositories/router_repository.dart';
 
-class RouterRepositoryImpl implements RouterRepository {
+class RouterRepositoryImpl extends RouterRepository {
   late GoRouter _router;
 
   void setRouter(GoRouter router) {
