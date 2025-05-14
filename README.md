@@ -28,12 +28,11 @@ $ flutter test
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
-  <img src="assets/home.png" alt="Demo del home" width="250"/>
-  <img src="assets/add.png" alt="Demo del añadir" width="250"/>
-  <img src="assets/home_all.png" alt="Demo del home_all" width="250"/>
-  <img src="assets/delete.png" alt="Demo del delete" width="250"/>
-  <img src="assets/completed.png" alt="Demo del completed" width="250"/>
-  <img src="assets/completed.png" alt="Demo del completed" width="250"/>
+  <img src="assets/images_for_git/home.png" alt="Demo del home" width="250"/>
+  <img src="assets/images_for_git/add.png" alt="Demo del añadir" width="250"/>
+  <img src="assets/images_for_git/home_all.png" alt="Demo del home_all" width="250"/>
+  <img src="assets/images_for_git/delete.png" alt="Demo del delete" width="250"/>
+  <img src="assets/images_for_git/completed.png" alt="Demo del completed" width="250"/>
 
 </div>
 
@@ -41,7 +40,7 @@ $ flutter test
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
-  <img src="assets/darkmode.png" alt="Demo del completed" width="250"/>
+  <img src="assets/images_for_git/darkmode.png" alt="Demo del completed" width="250"/>
 
 </div>
 
@@ -49,7 +48,7 @@ $ flutter test
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
-  <img src="assets/demo.gif" alt="Demo del completed" width="250"/>
+  <img src="assets/images_for_git/demo.gif" alt="Demo del completed" width="250"/>
 
 </div>
 
