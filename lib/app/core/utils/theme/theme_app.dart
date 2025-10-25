@@ -25,11 +25,11 @@ class ThemeApp {
         error: DarkColors.darkError,
         onError: DarkColors.darkOnError,
       ),
-      tabBarTheme: const TabBarTheme(
-        labelColor: DarkColors.darkOnSurface,
-        indicatorSize: TabBarIndicatorSize.label,
-        indicatorColor: DarkColors.darkPrimary,
-      ),
+      // tabBarTheme: const TabBarTheme(
+      //   labelColor: DarkColors.darkOnSurface,
+      //   indicatorSize: TabBarIndicatorSize.label,
+      //   indicatorColor: DarkColors.darkPrimary,
+      // ),
       appBarTheme: const AppBarTheme(
         backgroundColor: DarkColors.darkSurface,
         foregroundColor: DarkColors.darkOnSurface,
@@ -57,11 +57,6 @@ class ThemeApp {
       onSecondary: LightColors.lightOnSecondary,
       error: LightColors.lightError,
       onError: LightColors.lightOnError,
-    ),
-    tabBarTheme: const TabBarTheme(
-      labelColor: LightColors.lightOnSurface,
-      indicatorSize: TabBarIndicatorSize.label,
-      indicatorColor: LightColors.lightPrimary,
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: LightColors.lightSurface,
