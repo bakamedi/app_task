@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../global/widgets/custom/view/online_gv.dart';
 import '../../../../global/extensions/widgets_ext.dart';
 import '../../../../global/l10n_gen/generated/s.dart';
 import '../../../../global/widgets/titles/title_gw.dart';
@@ -16,6 +17,7 @@ class TitleHeaderW extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TitleGW(title: AppLocalizations.of(context).title),
+        OnlineGV(),
         ProfileBtnW(),
       ],
     ).padding(
