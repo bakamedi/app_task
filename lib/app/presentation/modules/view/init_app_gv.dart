@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer/consumer_widget.dart';
 
-import '../controller/init_app_gc.dart';
+import '../../global/controllers/supabase/supabase_gc.dart';
 
 class InitAppGV extends ConsumerStatefulWidget {
   const InitAppGV({super.key, required this.body});
@@ -20,7 +20,7 @@ class _InitAppGVState extends ConsumerState<InitAppGV> {
   }
 
   Future<void> _initializeApp() async {
-    final InitAppGC initAppGC = iniAppGP.read();
+    final SupabaseGC initAppGC = supabaseGP.read();
     await initAppGC.onInit();
   }
 

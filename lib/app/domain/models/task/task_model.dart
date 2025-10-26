@@ -17,12 +17,12 @@ String taskToJson(Task data) => json.encode(data.toJson());
 @freezed
 abstract class Task with _$Task {
   const factory Task({
-    @JsonKey(name: "id") required String id,
-    @JsonKey(name: "title") required String title,
-    @JsonKey(name: "description") required String description,
-    @JsonKey(name: "order") required int order,
-    @JsonKey(name: "completed") required bool completed,
-    @JsonKey(name: "created_at") required String createdAt,
+    required String id,
+    required String title,
+    required String description,
+    required int order,
+    required bool completed,
+    required String createdAt,
   }) = _Task;
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);

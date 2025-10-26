@@ -4,10 +4,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import '../core/adaptative_screen/adaptative_screen.dart';
 import '../core/l10n/l10n_languages.dart';
 import '../core/utils/theme/theme_app.dart';
-import 'global/controllers/init_app/view/init_app_gv.dart';
 import 'global/l10n_gen/generated/s.dart';
 import 'global/router/router_gc.dart';
 import 'global/widgets/loader/loader_gw.dart';
+import 'modules/view/init_app_gv.dart';
 import 'router/router_provider.dart';
 
 class MyApp extends StatelessWidget {
