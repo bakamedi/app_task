@@ -48,4 +48,9 @@ class UseCases {
       preferenceRepository: Repositories.userPreferenceRep.read(),
     ),
   );
+  static final onInitSupabaseUseCase = Provider(
+    (ref) => OnInitSupabaseUseCase(
+      supabaseRepository: Repositories.supabaseRep.read(),
+    ),
+  );
 }

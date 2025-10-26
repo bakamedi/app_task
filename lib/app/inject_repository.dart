@@ -31,4 +31,10 @@ class Repositories {
       storageProvider: StorageInjectProvider.storageInjectProvider.read(),
     ),
   );
+
+  static final supabaseRep = Provider<SupabaseRepository>(
+    (ref) => SupabaseRepositoryImpl(
+      supabaseProvider: SupabaseInjectProvider.supabaseInjectProvider.read(),
+    ),
+  );
 }
