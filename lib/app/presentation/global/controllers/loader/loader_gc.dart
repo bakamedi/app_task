@@ -4,9 +4,7 @@ import 'package:flutter_meedu/providers.dart';
 import 'loader_state.dart';
 
 final loaderGP = Provider.state<LoaderGC, LoaderState>(
-  (_) => LoaderGC(
-    LoaderState.initialState,
-  ),
+  (_) => LoaderGC(LoaderState.initialState),
 );
 
 class LoaderGC extends StateNotifier<LoaderState> {
@@ -15,10 +13,6 @@ class LoaderGC extends StateNotifier<LoaderState> {
   bool get loading => state.loading;
 
   Future<void> showLoader({required bool loading}) async {
-    onlyUpdate(
-      state = state.copyWith(
-        loading: loading,
-      ),
-    );
+    onlyUpdate(state = state.copyWith(loading: loading));
   }
 }

@@ -10,6 +10,7 @@ extension TaskFinderExt on Task {
 
   Task withGeneratedId() {
     final uuid = Uuid();
+
     return copyWith(id: uuid.v4(), createdAt: DateTime.now().toIso8601String());
   }
 }

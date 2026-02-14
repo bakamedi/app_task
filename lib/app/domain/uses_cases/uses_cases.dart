@@ -48,4 +48,8 @@ class UseCases {
       preferenceRepository: Repositories.userPreferenceRep.read(),
     ),
   );
+  static final onConfigureUseCase = Provider(
+    (ref) =>
+        OnConfigureUseCase(timeagoRepository: Repositories.timeagoRep.read()),
+  );
 }

@@ -31,4 +31,10 @@ class Repositories {
       storageProvider: StorageInjectProvider.storageInjectProvider.read(),
     ),
   );
+
+  static final timeagoRep = Provider<TimeagoRepository>(
+    (ref) => TimeagoRepositoryImpl(
+      timeagoProvider: TimeagoInjectProvider.taskInjectProvider.read(),
+    ),
+  );
 }

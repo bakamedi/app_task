@@ -7,3 +7,4 @@ export 'tasks/new/new_task_use_case.dart';
 export 'tasks/update/update_task_use_case.dart';
 export 'user_preferences/get_user_preferences_use_case.dart';
 export 'user_preferences/save_user_preferences_use_case.dart';
+export 'timeago/on_configure_use_case.dart';

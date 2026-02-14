@@ -9,7 +9,7 @@ class TaskRoute {
     return GoRoute(
       path: path,
       name: path,
-      builder: (context, __) {
+      builder: (context, _) {
         return TaskView();
       },
       pageBuilder: (context, state) {
