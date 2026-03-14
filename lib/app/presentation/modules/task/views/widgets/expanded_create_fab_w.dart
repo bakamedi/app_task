@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 
+import '../../../../global/utils/router_util.dart';
+import '../../../../router/app_routes/new_task_route.dart';
+import '../../../../router/app_routes/task_writing_route.dart';
+
 class ExpandedCreateFabW extends StatelessWidget {
   const ExpandedCreateFabW({super.key});
 
@@ -45,12 +49,12 @@ class ExpandedCreateFabW extends StatelessWidget {
         FloatingActionButton.small(
           heroTag: null,
           child: const Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () => RouterUtil.push(NewTaskRoute.path),
         ),
         FloatingActionButton.small(
           heroTag: null,
           child: const Icon(Icons.draw),
-          onPressed: () {},
+          onPressed: () => RouterUtil.push(TaskWritingRoute.path),
         ),
       ],
     );
