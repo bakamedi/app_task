@@ -10,4 +10,24 @@ final taskWritingProvider =
 
 class TaskWritingController extends StateNotifier<TaskWritingState> {
   TaskWritingController(super.initialState);
+
+  void onUndo() {
+    if (state.signatureController != null &&
+        state.signatureController!.canUndo) {
+      state.signatureController!.undo();
+    }
+  }
+
+  void onRedo() {
+    if (state.signatureController != null &&
+        state.signatureController!.canRedo) {
+      state.signatureController!.redo();
+    }
+  }
+
+  void onDelete() {
+    if (state.signatureController != null) {
+      state.signatureController!.clear();
+    }
+  }
 }
