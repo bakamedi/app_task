@@ -27,7 +27,7 @@ class SessionGC extends StateNotifier<SessionState> {
   final GetUserPreferencesUseCase _getUserPreferencesUseCase;
   final SetUserPreferencesUseCase _setUserPreferencesUseCase;
 
-  Future<void> init(BuildContext context) async {
+  Future<void> init() async {
     final preferences = await _getUserPreferencesUseCase.call();
     onlyUpdateWith((state) => state.copyWith(userPreferences: preferences));
   }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:timeago/timeago.dart' as timeago;
-
+import 'app/app_initializer.dart';
 import 'app/presentation/my_app.dart';
 
 void main() async {
@@ -12,7 +11,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  timeago.setLocaleMessages('en', timeago.EnMessages());
+  AppInitializer.init();
 
   runApp(const MyApp());
 }

@@ -9,7 +9,7 @@ class NewTaskRoute {
     return GoRoute(
       path: path,
       name: path,
-      builder: (context, __) {
+      builder: (context, _) {
         return NewTaskView();
       },
       pageBuilder: (context, state) {

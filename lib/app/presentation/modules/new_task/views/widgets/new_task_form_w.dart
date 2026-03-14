@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+
+import '../../../../global/extensions/widgets_ext.dart';
+import '../../../../global/l10n_gen/generated/s.dart';
+import '../../../../global/utils/task_validators.dart';
+import '../../../../global/widgets/btns/primary_btn.dart';
+import '../../../../global/widgets/inputs/input_text_gw.dart';
+import '../../controllers/new_task_controller.dart';
+import '../../controllers/ui/new_task_ui_controller.dart';
+import '../../utils/add_task.dart';
+import '../../utils/update_task.dart';
+
+class NewTaskFormW extends StatelessWidget {
+  const NewTaskFormW({
+    super.key,
+    required this.newTaskController,
+    required this.newTaskUIController,
+  });
+  final NewTaskController newTaskController;
+  final NewTaskUIController newTaskUIController;
+
+  @override
+  Widget build(BuildContext context) {
+    final appLocale = AppLocalizations.of(context);
+
+    return Form(
+      key: newTaskUIController.formTaskKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InputTextFieldGW(
+            onChanged: newTaskController.onChangeTitle,
+            initialValue: newTaskController.state.taskToAdd.title,
+            labelTxt: '',
+            backgroundLabel: AppLocalizations.of(context).taskTitle,
+            margin: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            textAlign: TextAlign.start,
+            maxLines: 1,
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.text,
+            obscureText: false,
+            readOnly: false,
+            enabled: true,
+            validator: TaskValidators.validateTitle,
+          ),
+          InputTextFieldGW(
+            onChanged: newTaskController.onChangeDescription,
+            initialValue: newTaskController.state.taskToAdd.description,
+            labelTxt: '',
+            backgroundLabel: AppLocalizations.of(context).taskDescription,
+            margin: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            textAlign: TextAlign.start,
+            maxLines: 3,
+            textInputAction: TextInputAction.done,
+            keyboardType: TextInputType.multiline,
+            obscureText: false,
+            readOnly: false,
+            enabled: true,
+            validator: TaskValidators.validateDescription,
+          ),
+          1.h.expanded,
+          PrimaryButton(
+            onPressed: newTaskController.hasTask
+                ? () => updateTask(appLocale)
+                : () => addTask(appLocale),
+            padding: EdgeInsets.only(bottom: 50),
+            label: newTaskController.hasTask
+                ? appLocale.editTask
+                : appLocale.addTask,
+          ),
+        ],
+      ),
+    ).padding(EdgeInsets.only(left: 15, right: 15));
+  }
+}

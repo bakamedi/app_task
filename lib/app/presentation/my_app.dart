@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import '../core/adaptative_screen/adaptative_screen.dart';
 import '../core/l10n/l10n_languages.dart';
 import '../core/utils/theme/theme_app.dart';
 import 'global/l10n_gen/generated/s.dart';
@@ -14,7 +13,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final adaptativeScreen = AdaptativeScreen(context);
     final RouterGC routerController = routerGP.read();
 
     routerController.load(routerProvider.read());
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: L10nLanguages.all,
           title: 'Task App',
         ),
-        LoaderGW(adaptativeScreen: adaptativeScreen),
+        LoaderGW(),
       ],
     );
   }
