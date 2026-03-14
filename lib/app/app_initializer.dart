@@ -1,7 +1,7 @@
 import 'presentation/global/controllers/timeago/timeago_gc.dart';
 
 class AppInitializer {
-  static Future<void> init() async {
+  static void init() {
     timeagoGP.read().onInit();
   }
 }
