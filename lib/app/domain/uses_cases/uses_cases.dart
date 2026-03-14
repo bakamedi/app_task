@@ -52,4 +52,11 @@ class UseCases {
     (ref) =>
         OnConfigureUseCase(timeagoRepository: Repositories.timeagoRep.read()),
   );
+
+  static final processImageToTextUseCase = Provider(
+    (ref) => ProcessImageToTextUseCase(
+      googleTextRecognitionRepository: Repositories.googleTextRecognitionRep
+          .read(),
+    ),
+  );
 }

@@ -37,4 +37,9 @@ class Repositories {
       timeagoProvider: TimeagoInjectProvider.taskInjectProvider.read(),
     ),
   );
+
+  static final googleTextRecognitionRep =
+      Provider<GoogleTextRecognitionRepository>(
+        (ref) => GoogleTextRecognitionRepositoryImpl(),
+      );
 }
