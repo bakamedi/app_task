@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
@@ -31,8 +33,8 @@ class TaskController extends StateNotifier<TaskState> {
   /// Inicializa el estado trayendo las tareas desde el caso de uso `getTasksUseCase`
   /// y clasifica las tareas en pendientes y completadas.
   Future<void> init() async {
-    final tasks =
-        await _getTasksUseCase.call(); // Obtiene las tareas desde el backend
+    // Obtiene las tareas desde el backend
+    final tasks = await _getTasksUseCase.call();
     final classified = TaskClassifier.from(
       tasks,
     ); // Clasifica las tareas en pendientes y completadas
@@ -43,8 +45,17 @@ class TaskController extends StateNotifier<TaskState> {
         all: classified.all,
         toDo: classified.toDo,
         completed: classified.completed,
+        expandableKey: GlobalKey<ExpandableFabState>(),
       ),
     );
+  }
+
+  void onChangeToggle() {
+    if (state.expandableKey?.currentState == null) {
+      return;
+    }
+    final keyState = state.expandableKey!.currentState;
+    keyState!.toggle();
   }
 
   /// Cambia el estado de completado de una tarea.

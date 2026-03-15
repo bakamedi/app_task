@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../domain/models/task/task_model.dart';
@@ -12,6 +14,7 @@ abstract class TaskState with _$TaskState {
     @Default([]) List<Task> toDo,
     @Default([]) List<Task> completed,
     @Default([]) List<Task> all,
+    GlobalKey<ExpandableFabState>? expandableKey,
   }) = _TaskState;
 
   static TaskState get initialState =>

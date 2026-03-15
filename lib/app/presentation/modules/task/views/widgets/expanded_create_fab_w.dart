@@ -6,7 +6,9 @@ import '../../../../router/app_routes/new_task_route.dart';
 import '../../../../router/app_routes/task_writing_route.dart';
 
 class ExpandedCreateFabW extends StatelessWidget {
-  const ExpandedCreateFabW({super.key});
+  const ExpandedCreateFabW({super.key, this.expandableKey});
+
+  final GlobalKey<ExpandableFabState>? expandableKey;
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +16,7 @@ class ExpandedCreateFabW extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return ExpandableFab(
+      key: expandableKey,
       type: ExpandableFabType.fan,
       childrenAnimation: ExpandableFabAnimation.rotate,
       distance: 70,
