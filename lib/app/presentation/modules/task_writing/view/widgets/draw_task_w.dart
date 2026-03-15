@@ -10,7 +10,7 @@ class DrawTaskW extends StatelessWidget {
   Widget build(BuildContext context) {
     return Signature(
       controller: signatureController,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     );
   }
 }

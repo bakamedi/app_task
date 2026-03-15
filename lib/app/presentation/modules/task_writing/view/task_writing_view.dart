@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
+import '../../../global/extensions/context_ext.dart';
 import '../../../global/l10n_gen/generated/s.dart';
 import '../../../global/utils/ui_util.dart';
 import '../controller/task_writing_controller.dart';
@@ -20,6 +21,7 @@ class TaskWritingView extends ConsumerWidget {
     final appLocale = AppLocalizations.of(context);
 
     final taskWritingController = ref.watch(taskWritingProvider);
+    taskWritingController.onInit(context.isDarkMode);
     final signature = taskWritingController.signature;
 
     return GestureDetector(

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 import 'package:signature/signature.dart';
@@ -36,6 +37,18 @@ class TaskWritingController extends StateNotifier<TaskWritingState> {
   final GetOrderByTasksUseCase _getOrderByTasksUseCase;
 
   SignatureController get signature => state.signatureController!;
+
+  void onInit(bool isDarkMode) {
+    onlyUpdate(
+      state = state.copyWith(
+        signatureController: SignatureController(
+          penStrokeWidth: 4,
+          penColor: isDarkMode ? Colors.white : Colors.black,
+          exportBackgroundColor: Colors.white,
+        ),
+      ),
+    );
+  }
 
   Future<void> addTask(List<Task> tasks) async {
     final taskByOrder = await _getOrderByTasksUseCase.call(

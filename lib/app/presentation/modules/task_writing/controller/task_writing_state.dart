@@ -25,11 +25,5 @@ abstract class TaskWritingState with _$TaskWritingState {
     SignatureController? signatureController,
   }) = _TaskWritingState;
 
-  static TaskWritingState get initialState => TaskWritingState(
-    signatureController: SignatureController(
-      penStrokeWidth: 4,
-      penColor: Colors.black,
-      exportBackgroundColor: Colors.white,
-    ),
-  );
+  static TaskWritingState get initialState => TaskWritingState();
 }
