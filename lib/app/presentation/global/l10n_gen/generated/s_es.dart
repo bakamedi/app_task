@@ -49,4 +49,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get deleteTask => 'Eliminada tarea exitosamente';
+
+  @override
+  String get writeTitleHere => 'Escribe aquí el titulo';
+
+  @override
+  String get errorProcessingImage => 'Hubo un error al procesar la imagen';
 }

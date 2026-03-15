@@ -181,6 +181,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Deleted task successfully'**
   String get deleteTask;
+
+  /// No description provided for @writeTitleHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Write the title here'**
+  String get writeTitleHere;
+
+  /// No description provided for @errorProcessingImage.
+  ///
+  /// In en, this message translates to:
+  /// **'There was an error processing the image'**
+  String get errorProcessingImage;
 }
 
 class _AppLocalizationsDelegate

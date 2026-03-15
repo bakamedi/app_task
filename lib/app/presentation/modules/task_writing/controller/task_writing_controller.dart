@@ -76,13 +76,10 @@ class TaskWritingController extends StateNotifier<TaskWritingState> {
     try {
       final bytes = await controller.toPngBytes();
       if (bytes == null) {
-        print('Error: bytes are null');
         return null;
       }
 
-      print('Processing image of size: ${bytes.length} bytes');
       final description = await _processImageToTextUseCase.call(bytes: bytes);
-      print('Recognized text: $description');
 
       onlyUpdate(
         state = state.copyWith(
@@ -92,7 +89,6 @@ class TaskWritingController extends StateNotifier<TaskWritingState> {
 
       return true;
     } catch (e) {
-      print('Error in processImage: $e');
       return null;
     }
   }

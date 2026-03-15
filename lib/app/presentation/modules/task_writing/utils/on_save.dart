@@ -10,17 +10,13 @@ void onSave(AppLocalizations appLocale) async {
   final taskController = taskProvider.read();
   final snackbarGC = snackbarGP.read();
 
-  print('Starting image processing...');
   final proccess = await taskWritingController.processImage();
 
   if (proccess == null) {
-    print('Image processing failed');
-    snackbarGC.show('Hubo un error al procesar la imagen');
+    snackbarGC.show(appLocale.errorProcessingImage);
   } else {
-    print('Image processing finished successfully');
     final tasks = taskController.all;
 
-    print('Adding task with description: ${taskWritingController.state.taskToAdd.description}');
     await taskWritingController.addTask(tasks);
 
     RouterUtil.pop();

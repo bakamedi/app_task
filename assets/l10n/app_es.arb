@@ -13,5 +13,7 @@
   "delete": "Eliminar",
   "doneTask": "Agregada tarea exitosamente",
   "updateTask": "Actualizada tarea exitosamente",
-  "deleteTask": "Eliminada tarea exitosamente"
+  "deleteTask": "Eliminada tarea exitosamente",
+  "writeTitleHere": "Escribe aquí el titulo",
+  "errorProcessingImage": "Hubo un error al procesar la imagen"
 }

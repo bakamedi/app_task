@@ -17,7 +17,7 @@ class TextInputTitleW extends StatelessWidget {
     return TextField(
       onChanged: taskWritingController.onTitleChanged,
       decoration: InputDecoration(
-        hintText: 'Escribe aquí el titulo',
+        hintText: appLocale.writeTitleHere,
         border: InputBorder.none,
         hintStyle: TextStyle(
           fontSize: adaptativeScreen.dp(2.2),
