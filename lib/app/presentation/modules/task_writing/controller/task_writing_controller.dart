@@ -55,7 +55,12 @@ class TaskWritingController extends StateNotifier<TaskWritingState> {
       state.taskToAdd,
       tasks,
     );
-    await _newTaskUseCase.call(TaskFromForm(taskByOrder.withGeneratedId()));
+    await _newTaskUseCase.call(
+      TaskFromWriting(
+        task: taskByOrder.withGeneratedId(),
+        signature: signature,
+      ),
+    );
   }
 
   void onUndo() {
