@@ -1,14 +1,14 @@
 import '../../../global/controllers/snackbar/snackbar_gc.dart';
 import '../../../global/l10n_gen/generated/s.dart';
-import '../controllers/new_task_controller.dart';
 import '../../task/controllers/task_controller.dart';
+import '../controller/task_writing_controller.dart';
 
-void addTask(AppLocalizations appLocale) async {
+void createTaskFromWriting(AppLocalizations appLocale) async {
+  final taskWritingController = taskWritingProvider.read();
   final taskController = taskProvider.read();
-  final newTaskController = newTaskProvider.read();
   final snackbarGC = snackbarGP.read();
 
-  await newTaskController.addTask(taskController.all);
+  await taskWritingController.addTask(taskController.all);
 
   snackbarGC.show(appLocale.doneTask);
   taskController.init();

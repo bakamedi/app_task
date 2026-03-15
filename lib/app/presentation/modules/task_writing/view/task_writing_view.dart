@@ -6,7 +6,7 @@ import '../../../global/utils/ui_util.dart';
 import '../controller/task_writing_controller.dart';
 import '../utils/on_erase_all.dart';
 import '../utils/on_redo.dart';
-import '../utils/on_save.dart';
+import '../utils/create_task_from_writing.dart';
 import '../utils/on_undo.dart';
 import 'widgets/draw_task_w.dart';
 import 'widgets/task_fab_toolbar_w.dart';
@@ -39,7 +39,7 @@ class TaskWritingView extends ConsumerWidget {
               onUndo: onUndo,
               onRedo: onRedo,
               onDelete: onEraseAll,
-              onSave: () => onSave(appLocale),
+              onSave: () => createTaskFromWriting(appLocale),
             );
           },
         ),

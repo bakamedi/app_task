@@ -19,12 +19,8 @@ class GoogleTextRecognitionRepositoryImpl
       final file = File('${dir.path}/drawing.png');
       await file.writeAsBytes(bytes);
 
-      final fileSize = await file.length();
-      print('File saved at: ${file.path}, size: $fileSize bytes');
-
       final inputImage = InputImage.fromFile(file);
 
-      print('Starting Text Recognition with script: $textScript');
       final textRecognizer = TextRecognizer(script: textScript);
 
       final RecognizedText recognizedText = await textRecognizer.processImage(
@@ -32,11 +28,9 @@ class GoogleTextRecognitionRepositoryImpl
       );
 
       final resultText = recognizedText.text;
-      print('Recognition result: "$resultText"');
       textRecognizer.close();
       return resultText;
     } catch (e) {
-      print('Error in repository processImageToText: $e');
       return null;
     }
   }

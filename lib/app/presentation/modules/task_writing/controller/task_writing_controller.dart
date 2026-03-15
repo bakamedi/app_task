@@ -2,6 +2,7 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 import 'package:signature/signature.dart';
 
+import '../../../../domain/defs/task_creation_source.dart';
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../domain/uses_cases/google_text_recognition/process_image_to_text_use_case.dart';
 import '../../../../domain/uses_cases/tasks/gets/get_order_by_tasks_use_case.dart';
@@ -41,7 +42,7 @@ class TaskWritingController extends StateNotifier<TaskWritingState> {
       state.taskToAdd,
       tasks,
     );
-    await _newTaskUseCase.call(taskByOrder.withGeneratedId());
+    await _newTaskUseCase.call(TaskFromForm(taskByOrder.withGeneratedId()));
   }
 
   void onUndo() {

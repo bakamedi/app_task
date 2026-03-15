@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../global/extensions/widgets_ext.dart';
 import '../../../../global/l10n_gen/generated/s.dart';
-import '../../../../global/utils/task_validators.dart';
+import '../../../../global/validators/task_validators.dart';
 import '../../../../global/widgets/btns/primary_btn.dart';
 import '../../../../global/widgets/inputs/input_text_gw.dart';
 import '../../controllers/new_task_controller.dart';

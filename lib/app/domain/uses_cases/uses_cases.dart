@@ -11,7 +11,11 @@ class UseCases {
   );
 
   static final newTaskUseCase = Provider(
-    (ref) => NewTaskUseCase(taskRepository: Repositories.taskRep.read()),
+    (ref) => NewTaskUseCase(
+      taskRepository: Repositories.taskRep.read(),
+      googleTextRecognitionRepository: Repositories.googleTextRecognitionRep
+          .read(),
+    ),
   );
 
   static final updateTaskUseCase = Provider(

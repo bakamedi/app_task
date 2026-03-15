@@ -1,6 +1,7 @@
 import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
+import '../../../../domain/defs/task_creation_source.dart';
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../domain/uses_cases/tasks/delete/delete_task_use_case.dart';
 import '../../../../domain/uses_cases/tasks/gets/get_order_by_tasks_use_case.dart';
@@ -45,7 +46,7 @@ class NewTaskController extends StateNotifier<NewTaskState> {
       state.taskToAdd,
       tasks,
     );
-    await _newTaskUseCase.call(taskByOrder.withGeneratedId());
+    await _newTaskUseCase.call(TaskFromForm(taskByOrder.withGeneratedId()));
   }
 
   void onChangeTitle(String? title) {
