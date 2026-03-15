@@ -11,7 +11,11 @@ class UseCases {
   );
 
   static final newTaskUseCase = Provider(
-    (ref) => NewTaskUseCase(taskRepository: Repositories.taskRep.read()),
+    (ref) => NewTaskUseCase(
+      taskRepository: Repositories.taskRep.read(),
+      googleTextRecognitionRepository: Repositories.googleTextRecognitionRep
+          .read(),
+    ),
   );
 
   static final updateTaskUseCase = Provider(
@@ -51,5 +55,12 @@ class UseCases {
   static final onConfigureUseCase = Provider(
     (ref) =>
         OnConfigureUseCase(timeagoRepository: Repositories.timeagoRep.read()),
+  );
+
+  static final processImageToTextUseCase = Provider(
+    (ref) => ProcessImageToTextUseCase(
+      googleTextRecognitionRepository: Repositories.googleTextRecognitionRep
+          .read(),
+    ),
   );
 }

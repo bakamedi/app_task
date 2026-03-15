@@ -14,12 +14,9 @@ class SnackbarRepositoryImpl extends SnackbarRepository {
   void showSnackbar(String message) {
     ScaffoldMessenger.of(_context).showSnackBar(
       SnackBar(
-        content: Text(message, style: TextStyle(color: Colors.white)),
+        content: Text(message),
         duration: const Duration(milliseconds: 2000),
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
+        behavior: SnackBarBehavior.fixed,
       ),
     );
   }

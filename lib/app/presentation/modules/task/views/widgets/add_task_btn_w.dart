@@ -16,7 +16,7 @@ class AddTaskBtnW extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: primaryColor.withValues(alpha: 0.2),
-          shape: BoxShape.circle,
+          shape: BoxShape.rectangle,
         ),
         child: Icon(Icons.add, color: primaryColor),
       ),
