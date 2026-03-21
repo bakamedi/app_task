@@ -1,9 +1,11 @@
 // lib/core/utils/navigation_utils.dart
 
-import '../../router/router_provider.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../router/app_router.dart';
 
 abstract class RouterUtil {
-  static final _router = routerProvider.read();
+  static GoRouter get _router => AppRouter.routerProvider.read();
 
   static void push(String route, {Object? extra}) {
     _router.push(route, extra: extra);

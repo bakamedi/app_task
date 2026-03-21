@@ -11,10 +11,6 @@ class Repositories {
     (ref) => RouterRepositoryImpl(),
   );
 
-  static final snackbarRep = Provider<SnackbarRepository>(
-    (ref) => SnackbarRepositoryImpl(),
-  );
-
   static final dbRep = Provider<DbRepository>(
     (ref) =>
         DbRepositoryImpl(dbProvider: DbInjectProvider.dbInjectProvider.read()),

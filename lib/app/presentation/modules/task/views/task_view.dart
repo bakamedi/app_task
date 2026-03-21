@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:flutter_meedu/consumer.dart';
 
-import '../../../global/controllers/snackbar/snackbar_gc.dart';
 import '../../../global/extensions/widgets_ext.dart';
 import '../controllers/task_controller.dart';
 import 'widgets/body_task_w.dart';
@@ -16,10 +15,7 @@ class TaskView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, BuilderRef ref) {
-    final SnackbarGC snackbarController = snackbarGP.read();
     final taskController = ref.watch(taskProvider);
-
-    snackbarController.setContext(context);
 
     return Scaffold(
       floatingActionButtonLocation: ExpandableFab.location,

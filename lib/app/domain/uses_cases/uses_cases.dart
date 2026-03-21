@@ -26,17 +26,6 @@ class UseCases {
     (ref) => DeleteTaskUseCase(taskRepository: Repositories.taskRep.read()),
   );
 
-  static final showSnackbarUseCase = Provider(
-    (ref) => ShowSnackbarUseCase(
-      snackbarRepository: Repositories.snackbarRep.read(),
-    ),
-  );
-
-  static final setContextUseCase = Provider(
-    (ref) =>
-        SetContextUseCase(snackbarRepository: Repositories.snackbarRep.read()),
-  );
-
   static final getOrderByTasksUseCase = Provider(
     (ref) =>
         GetOrderByTasksUseCase(taskRepository: Repositories.taskRep.read()),

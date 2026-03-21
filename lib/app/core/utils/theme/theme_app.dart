@@ -25,11 +25,6 @@ class ThemeApp {
         error: DarkColors.darkError,
         onError: DarkColors.darkOnError,
       ),
-      // tabBarTheme: const TabBarTheme(
-      //   labelColor: DarkColors.darkOnSurface,
-      //   indicatorSize: TabBarIndicatorSize.label,
-      //   indicatorColor: DarkColors.darkPrimary,
-      // ),
       appBarTheme: const AppBarTheme(
         backgroundColor: DarkColors.darkSurface,
         foregroundColor: DarkColors.darkOnSurface,
@@ -40,6 +35,18 @@ class ThemeApp {
         bodyMedium: TextStyle(color: DarkColors.darkOnSurface),
       ),
       cardColor: DarkColors.darkSurface,
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: DarkColors.darkSurface,
+        contentTextStyle: const TextStyle(
+          color: DarkColors.darkOnSurface,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
+        actionTextColor: DarkColors.darkPrimary,
+        elevation: 6,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
     );
   }
 
@@ -68,5 +75,17 @@ class ThemeApp {
       bodyMedium: TextStyle(color: LightColors.lightOnSurface),
     ),
     cardColor: LightColors.lightSurface,
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: LightColors.lightSurface,
+      contentTextStyle: const TextStyle(
+        color: LightColors.lightOnSurface,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      ),
+      actionTextColor: LightColors.lightPrimary,
+      elevation: 6,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
   );
 }
