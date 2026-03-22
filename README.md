@@ -36,6 +36,11 @@ $ dart run build_runner build -d --delete-conflicting-outputs
 $ flutter run
 ```
 
+## Gen-l10n
+```bash
+$ flutter gen-l10n
+```
+
 ## Test
 
 ```bash

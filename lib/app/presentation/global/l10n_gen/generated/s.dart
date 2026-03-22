@@ -193,6 +193,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'There was an error processing the image'**
   String get errorProcessingImage;
+
+  /// No description provided for @errorDeletingTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting task'**
+  String get errorDeletingTask;
+
+  /// No description provided for @errorCreatingTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Error creating task'**
+  String get errorCreatingTask;
+
+  /// No description provided for @errorUpdatingTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Error updating task'**
+  String get errorUpdatingTask;
+
+  /// No description provided for @errorCompletingTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Error completing task'**
+  String get errorCompletingTask;
 }
 
 class _AppLocalizationsDelegate

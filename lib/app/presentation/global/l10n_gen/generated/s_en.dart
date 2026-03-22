@@ -55,4 +55,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorProcessingImage => 'There was an error processing the image';
+
+  @override
+  String get errorDeletingTask => 'Error deleting task';
+
+  @override
+  String get errorCreatingTask => 'Error creating task';
+
+  @override
+  String get errorUpdatingTask => 'Error updating task';
+
+  @override
+  String get errorCompletingTask => 'Error completing task';
 }

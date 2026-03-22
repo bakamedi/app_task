@@ -35,7 +35,8 @@ class TasksW extends ConsumerWidget {
             task: task,
             deleteTask: (task) => deleteTask(task, appLocale: appLocale),
             goTask: (task) => goTask(task),
-            updateCompleted: (task) => updateCompleted(task),
+            updateCompleted: (task) =>
+                updateCompleted(task, appLocale: appLocale),
           );
         },
         proxyDecorator: (Widget child, int index, Animation<double> animation) {

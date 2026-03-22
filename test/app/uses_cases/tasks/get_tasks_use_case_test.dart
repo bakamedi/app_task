@@ -1,5 +1,7 @@
+import 'package:app_task/app/core/either/either.dart';
 import 'package:app_task/app/domain/models/task/task_model.dart';
 import 'package:app_task/app/domain/repositories/task_repository.dart';
+import 'package:app_task/app/domain/uses_cases/base/base_use_case.dart';
 import 'package:app_task/app/domain/uses_cases/tasks/gets/get_tasks_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -28,13 +30,14 @@ void main() {
       ),
     ];
 
-    when(() => mockRepository.getTasks()).thenAnswer((_) async => fakeTasks);
+    when(() => mockRepository.getTasks())
+        .thenAnswer((_) async => Either.right(fakeTasks));
 
     // Act
-    final result = await getTasksUseCase();
+    final result = await getTasksUseCase(NoParams());
 
     // Assert
-    expect(result, equals(fakeTasks));
+    expect(result.getRightOrNull(), equals(fakeTasks));
     verify(() => mockRepository.getTasks()).called(1);
   });
 }

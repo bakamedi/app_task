@@ -1,4 +1,7 @@
+import '../../../../core/either/either.dart';
+import '../../../../core/success/success.dart';
 import '../../../../domain/defs/type_defs.dart';
+import '../../../../domain/models/failures/failure.dart';
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../presentation/global/extensions/task_ext.dart';
 import '../store/store_provider.dart';
@@ -8,34 +11,50 @@ class TaskProvider {
     : _storeProvider = storeProvider;
   final StoreProvider _storeProvider;
 
-  Future<void> addTask(Task task) async {
-    await _storeProvider.createRecord(task.toJson());
-  }
-
-  Future<void> updateTask(Task task) async {
-    await _storeProvider.updateRecord(
-      value: task.toJson(),
-      finder: task.finderById,
-    );
-  }
-
-  Future<void> deleteTask(Task task) async {
-    await _storeProvider.removeRecord(finder: task.finderById);
-  }
-
-  Future<List<Task>> getTasks() async {
+  FutureEither<Failure, Success> addTask(Task task) async {
     try {
-      final records = await _storeProvider.getAllRecords(
+      await _storeProvider.createRecord(task.toJson());
+      return const Either.right(Success());
+    } catch (e) {
+      return const Either.left(Failure.storage());
+    }
+  }
+
+  FutureEither<Failure, Success> updateTask(Task task) async {
+    try {
+      await _storeProvider.updateRecord(
+        value: task.toJson(),
+        finder: task.finderById,
+      );
+      return const Either.right(Success());
+    } catch (e) {
+      return const Either.left(Failure.storage());
+    }
+  }
+
+  FutureEither<Failure, Success> deleteTask(Task task) async {
+    try {
+      await _storeProvider.removeRecord(finder: task.finderById);
+      return const Either.right(Success());
+    } catch (e) {
+      return const Either.left(Failure.storage());
+    }
+  }
+
+  FutureEither<Failure, List<Task>> getTasks() async {
+    try {
+      final recordsFilter = await _storeProvider.getAllRecords(
         finder: Task.finderFilter(),
       );
 
-      return records
+      final records = recordsFilter
           .map((record) => Task.fromJson(record.value as Json))
           .toList();
+      return Either.right(records);
     } catch (e) {
       Exception('Error getTasks: $e');
 
-      return [];
+      return const Either.left(Failure.storage());
     }
   }
 }

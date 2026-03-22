@@ -24,7 +24,7 @@ class TaskView extends ConsumerWidget {
       ),
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: .start,
           children: [
             TitleHeaderW(),
             TabTaskW(

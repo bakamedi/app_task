@@ -1,5 +1,7 @@
 import 'dart:typed_data';
 
+import 'package:app_task/app/core/either/either.dart';
+import 'package:app_task/app/core/success/success.dart';
 import 'package:app_task/app/domain/defs/task_creation_source.dart';
 import 'package:app_task/app/domain/models/task/task_model.dart';
 import 'package:app_task/app/domain/repositories/google_text_recognition_repository.dart';
@@ -58,7 +60,8 @@ void main() {
         createdAt: '2025-01-01',
       );
 
-      when(() => mockRepository.addTask(any())).thenAnswer((_) async => {});
+      when(() => mockRepository.addTask(any()))
+          .thenAnswer((_) async => const Either.right(Success()));
 
       // Act
       await newTaskUseCase(const TaskFromForm(task));
@@ -87,7 +90,8 @@ void main() {
             bytes: any(named: 'bytes'),
             textScript: any(named: 'textScript'),
           )).thenAnswer((_) async => 'Recognized text');
-      when(() => mockRepository.addTask(any())).thenAnswer((_) async => {});
+      when(() => mockRepository.addTask(any()))
+          .thenAnswer((_) async => const Either.right(Success()));
 
       // Act
       await newTaskUseCase(TaskFromWriting(task: task, signature: mockSignature));

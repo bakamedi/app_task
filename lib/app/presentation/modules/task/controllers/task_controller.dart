@@ -4,6 +4,7 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
 import '../../../../domain/models/task/task_model.dart';
+import '../../../../domain/uses_cases/base/base_use_case.dart';
 import '../../../../domain/uses_cases/tasks/task_classifier.dart';
 import '../../../../domain/uses_cases/tasks/gets/get_tasks_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
@@ -34,20 +35,26 @@ class TaskController extends StateNotifier<TaskState> {
   /// y clasifica las tareas en pendientes y completadas.
   Future<void> init() async {
     // Obtiene las tareas desde el backend
-    final tasks = await _getTasksUseCase.call();
-    final classified = TaskClassifier.from(
+    state = state.copyWith(appViewState: .loading);
+    final result = await _getTasksUseCase.call(NoParams());
+    result.fold((failure) => state = state.copyWith(appViewState: .error), (
       tasks,
-    ); // Clasifica las tareas en pendientes y completadas
+    ) {
+      final classified = TaskClassifier.from(
+        tasks,
+      ); // Clasifica las tareas en pendientes y completadas
 
-    // Actualiza el estado con las tareas clasificadas
-    onlyUpdateWith(
-      (state) => state.copyWith(
-        all: classified.all,
-        toDo: classified.toDo,
-        completed: classified.completed,
-        expandableKey: GlobalKey<ExpandableFabState>(),
-      ),
-    );
+      // Actualiza el estado con las tareas clasificadas
+      onlyUpdateWith(
+        (state) => state.copyWith(
+          all: classified.all,
+          toDo: classified.toDo,
+          completed: classified.completed,
+          expandableKey: GlobalKey<ExpandableFabState>(),
+          appViewState: .success,
+        ),
+      );
+    });
   }
 
   void onChangeToggle() {

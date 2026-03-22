@@ -1,3 +1,4 @@
+import '../../../global/extensions/failure_ext.dart';
 import '../../../global/l10n_gen/generated/s.dart';
 import '../../../global/utils/router_util.dart';
 import '../../../global/utils/snackbar_util.dart';
@@ -15,10 +16,15 @@ void updateTask(AppLocalizations appLocale) async {
     return;
   }
   final updTask = newTaskController.state.taskToAdd;
-  await newTaskController.updateTask(updTask);
+  final result = await newTaskController.updateTask(updTask);
 
-  RouterUtil.pop();
-  SnackbarUtil.show(appLocale.updateTask);
+  result.fold(
+    (failure) => failure.show(content: 'Error al actualizar la tarea'),
+    (_) {
+      RouterUtil.pop();
+      SnackbarUtil.show(appLocale.updateTask);
 
-  taskController.init();
+      taskController.init();
+    },
+  );
 }

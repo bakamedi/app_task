@@ -1,3 +1,6 @@
+import 'package:app_task/app/core/either/either.dart';
+import 'package:app_task/app/core/success/success.dart';
+import 'package:app_task/app/domain/uses_cases/tasks/gets/get_order_by_tasks_params.dart';
 import 'package:app_task/app/domain/uses_cases/tasks/gets/get_order_by_tasks_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -62,10 +65,16 @@ void main() {
         ),
       ];
 
-      when(() => mockRepository.updateTask(any())).thenAnswer((_) async => {});
+      when(() => mockRepository.updateTask(any()))
+          .thenAnswer((_) async => const Either.right(Success()));
 
       // Act
-      final result = await getOrderByTasksUseCase(taskToAdd, currentTasks);
+      final result = await getOrderByTasksUseCase(
+        GetOrderByTasksParams(
+          taskToAdd: taskToAdd,
+          currentTasks: currentTasks,
+        ),
+      );
 
       // Assert
       verify(
@@ -76,8 +85,8 @@ void main() {
         () => mockRepository.updateTask(currentTasks[1].copyWith(order: 2)),
       ).called(1);
 
-      expect(result.order, 0);
-      expect(result.id, taskToAdd.id);
+      expect(result.getRightOrNull()?.order, 0);
+      expect(result.getRightOrNull()?.id, taskToAdd.id);
     },
   );
 }

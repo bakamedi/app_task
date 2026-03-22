@@ -15,5 +15,9 @@
   "updateTask": "Updated task successfully",
   "deleteTask": "Deleted task successfully",
   "writeTitleHere": "Write the title here",
-  "errorProcessingImage": "There was an error processing the image"
+  "errorProcessingImage": "There was an error processing the image",
+  "errorDeletingTask": "Error deleting task",
+  "errorCreatingTask": "Error creating task",
+  "errorUpdatingTask": "Error updating task",
+  "errorCompletingTask": "Error completing task"
 }
