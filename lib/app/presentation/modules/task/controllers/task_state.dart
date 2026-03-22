@@ -3,6 +3,7 @@ import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../domain/models/task/task_model.dart';
+import '../../../global/utils/app_view_state_util.dart';
 
 part 'task_state.freezed.dart';
 
@@ -11,6 +12,7 @@ abstract class TaskState with _$TaskState {
   const TaskState._();
 
   const factory TaskState({
+    @Default(AppViewStateUtil.idle) AppViewStateUtil appViewState,
     @Default([]) List<Task> toDo,
     @Default([]) List<Task> completed,
     @Default([]) List<Task> all,

@@ -1,3 +1,5 @@
+import '../../../domain/defs/type_defs.dart';
+import '../../../domain/models/failures/failure.dart';
 import '../../../domain/models/task/task_model.dart';
 import '../../../domain/repositories/task_repository.dart';
 import '../../source/providers/tasks/task_provider.dart';
@@ -22,7 +24,7 @@ class TaskRepositoryImpl extends TaskRepository {
   }
 
   @override
-  Future<List<Task>> getTasks() async {
+  FutureEither<Failure, List<Task>> getTasks() async {
     return await _taskProvider.getTasks();
   }
 

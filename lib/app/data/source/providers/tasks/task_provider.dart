@@ -1,4 +1,6 @@
+import '../../../../core/either/either.dart';
 import '../../../../domain/defs/type_defs.dart';
+import '../../../../domain/models/failures/failure.dart';
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../presentation/global/extensions/task_ext.dart';
 import '../store/store_provider.dart';
@@ -23,19 +25,20 @@ class TaskProvider {
     await _storeProvider.removeRecord(finder: task.finderById);
   }
 
-  Future<List<Task>> getTasks() async {
+  FutureEither<Failure, List<Task>> getTasks() async {
     try {
-      final records = await _storeProvider.getAllRecords(
+      final recordsFilter = await _storeProvider.getAllRecords(
         finder: Task.finderFilter(),
       );
 
-      return records
+      final records = recordsFilter
           .map((record) => Task.fromJson(record.value as Json))
           .toList();
+      return Either.right(records);
     } catch (e) {
       Exception('Error getTasks: $e');
 
-      return [];
+      return const Either.left(Failure.storage());
     }
   }
 }

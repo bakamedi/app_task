@@ -34,20 +34,26 @@ class TaskController extends StateNotifier<TaskState> {
   /// y clasifica las tareas en pendientes y completadas.
   Future<void> init() async {
     // Obtiene las tareas desde el backend
-    final tasks = await _getTasksUseCase.call();
-    final classified = TaskClassifier.from(
+    state = state.copyWith(appViewState: .loading);
+    final result = await _getTasksUseCase.call();
+    result.fold((failure) => state = state.copyWith(appViewState: .error), (
       tasks,
-    ); // Clasifica las tareas en pendientes y completadas
+    ) {
+      final classified = TaskClassifier.from(
+        tasks,
+      ); // Clasifica las tareas en pendientes y completadas
 
-    // Actualiza el estado con las tareas clasificadas
-    onlyUpdateWith(
-      (state) => state.copyWith(
-        all: classified.all,
-        toDo: classified.toDo,
-        completed: classified.completed,
-        expandableKey: GlobalKey<ExpandableFabState>(),
-      ),
-    );
+      // Actualiza el estado con las tareas clasificadas
+      onlyUpdateWith(
+        (state) => state.copyWith(
+          all: classified.all,
+          toDo: classified.toDo,
+          completed: classified.completed,
+          expandableKey: GlobalKey<ExpandableFabState>(),
+          appViewState: .success,
+        ),
+      );
+    });
   }
 
   void onChangeToggle() {
