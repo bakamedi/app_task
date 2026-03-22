@@ -10,7 +10,7 @@ class GetTasksUseCase implements UseCase<List<Task>, NoParams> {
   final TaskRepository _taskRepository;
 
   @override
-  FutureEither<Failure, List<Task>> call({NoParams? params}) async {
+  FutureEither<Failure, List<Task>> call(NoParams params) async {
     return await _taskRepository.getTasks();
   }
 }

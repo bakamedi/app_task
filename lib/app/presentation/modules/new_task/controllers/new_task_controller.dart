@@ -1,7 +1,10 @@
 import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
+import '../../../../core/success/success.dart';
 import '../../../../domain/defs/task_creation_source.dart';
+import '../../../../domain/defs/type_defs.dart';
+import '../../../../domain/models/failures/failure.dart';
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../domain/uses_cases/tasks/delete/delete_task_use_case.dart';
 import '../../../../domain/uses_cases/tasks/gets/get_order_by_tasks_use_case.dart';
@@ -73,7 +76,7 @@ class NewTaskController extends StateNotifier<NewTaskState> {
     await _updateTaskUseCase.call(task);
   }
 
-  Future<void> deleteTask(Task task) async {
-    await _deleteTaskUseCase.call(task);
+  FutureEither<Failure, Success> deleteTask(Task task) async {
+    return await _deleteTaskUseCase.call(task);
   }
 }

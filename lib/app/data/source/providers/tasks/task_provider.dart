@@ -1,4 +1,5 @@
 import '../../../../core/either/either.dart';
+import '../../../../core/success/success.dart';
 import '../../../../domain/defs/type_defs.dart';
 import '../../../../domain/models/failures/failure.dart';
 import '../../../../domain/models/task/task_model.dart';
@@ -21,8 +22,13 @@ class TaskProvider {
     );
   }
 
-  Future<void> deleteTask(Task task) async {
-    await _storeProvider.removeRecord(finder: task.finderById);
+  FutureEither<Failure, Success> deleteTask(Task task) async {
+    try {
+      await _storeProvider.removeRecord(finder: task.finderById);
+      return const Either.right(Success());
+    } catch (e) {
+      return const Either.left(Failure.storage());
+    }
   }
 
   FutureEither<Failure, List<Task>> getTasks() async {

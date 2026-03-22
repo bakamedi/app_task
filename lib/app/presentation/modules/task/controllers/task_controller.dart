@@ -4,6 +4,7 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
 import '../../../../domain/models/task/task_model.dart';
+import '../../../../domain/uses_cases/base/base_use_case.dart';
 import '../../../../domain/uses_cases/tasks/task_classifier.dart';
 import '../../../../domain/uses_cases/tasks/gets/get_tasks_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
@@ -35,7 +36,7 @@ class TaskController extends StateNotifier<TaskState> {
   Future<void> init() async {
     // Obtiene las tareas desde el backend
     state = state.copyWith(appViewState: .loading);
-    final result = await _getTasksUseCase.call();
+    final result = await _getTasksUseCase.call(NoParams());
     result.fold((failure) => state = state.copyWith(appViewState: .error), (
       tasks,
     ) {

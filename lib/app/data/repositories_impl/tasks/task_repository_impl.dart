@@ -1,3 +1,4 @@
+import '../../../core/success/success.dart';
 import '../../../domain/defs/type_defs.dart';
 import '../../../domain/models/failures/failure.dart';
 import '../../../domain/models/task/task_model.dart';
@@ -14,8 +15,8 @@ class TaskRepositoryImpl extends TaskRepository {
   }
 
   @override
-  Future<void> deleteTask(Task task) async {
-    await _taskProvider.deleteTask(task);
+  FutureEither<Failure, Success> deleteTask(Task task) async {
+    return await _taskProvider.deleteTask(task);
   }
 
   @override

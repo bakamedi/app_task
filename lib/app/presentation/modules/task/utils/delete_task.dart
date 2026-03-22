@@ -8,8 +8,14 @@ void deleteTask(Task task, {required AppLocalizations appLocale}) async {
   final TaskController taskController = taskProvider.read();
   final NewTaskController newTaskController = newTaskProvider.read();
 
-  await newTaskController.deleteTask(task);
-  SnackbarUtil.show(appLocale.deleteTask);
-
-  taskController.deleteTask(task);
+  final result = await newTaskController.deleteTask(task);
+  result.fold(
+    (failure) {
+      SnackbarUtil.show(appLocale.deleteTask, type: .error);
+    },
+    (_) {
+      taskController.deleteTask(task);
+      SnackbarUtil.show(appLocale.deleteTask);
+    },
+  );
 }
