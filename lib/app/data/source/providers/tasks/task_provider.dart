@@ -11,15 +11,25 @@ class TaskProvider {
     : _storeProvider = storeProvider;
   final StoreProvider _storeProvider;
 
-  Future<void> addTask(Task task) async {
-    await _storeProvider.createRecord(task.toJson());
+  FutureEither<Failure, Success> addTask(Task task) async {
+    try {
+      await _storeProvider.createRecord(task.toJson());
+      return const Either.right(Success());
+    } catch (e) {
+      return const Either.left(Failure.storage());
+    }
   }
 
-  Future<void> updateTask(Task task) async {
-    await _storeProvider.updateRecord(
-      value: task.toJson(),
-      finder: task.finderById,
-    );
+  FutureEither<Failure, Success> updateTask(Task task) async {
+    try {
+      await _storeProvider.updateRecord(
+        value: task.toJson(),
+        finder: task.finderById,
+      );
+      return const Either.right(Success());
+    } catch (e) {
+      return const Either.left(Failure.storage());
+    }
   }
 
   FutureEither<Failure, Success> deleteTask(Task task) async {

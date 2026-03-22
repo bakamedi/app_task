@@ -1,9 +1,13 @@
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 
+import '../../../../core/success/success.dart';
 import '../../../defs/task_creation_source.dart';
+import '../../../defs/type_defs.dart';
+import '../../../models/failures/failure.dart';
 import '../../../repositories/index_repositories.dart';
+import '../../base/base_use_case.dart';
 
-class NewTaskUseCase {
+class NewTaskUseCase implements UseCase<Success, TaskCreationSource> {
   NewTaskUseCase({
     required TaskRepository taskRepository,
     required GoogleTextRecognitionRepository googleTextRecognitionRepository,
@@ -12,11 +16,11 @@ class NewTaskUseCase {
   final TaskRepository _taskRepository;
   final GoogleTextRecognitionRepository _googleTextRecognitionRepository;
 
-  Future<void> call(TaskCreationSource source) async {
+  @override
+  FutureEither<Failure, Success> call(TaskCreationSource source) async {
     switch (source) {
       case TaskFromForm(task: final task):
-        await _taskRepository.addTask(task);
-        break;
+        return await _taskRepository.addTask(task);
       case TaskFromWriting(task: final task, signature: final signature):
         // Caso complejo: procesamos la firma antes de guardar
         final bytes = await signature.toPngBytes();
@@ -30,8 +34,7 @@ class NewTaskUseCase {
           createdAt: DateTime.now().toIso8601String(),
         );
 
-        await _taskRepository.addTask(newTask);
-        break;
+        return await _taskRepository.addTask(newTask);
     }
   }
 }

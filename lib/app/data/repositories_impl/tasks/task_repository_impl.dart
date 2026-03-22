@@ -10,8 +10,8 @@ class TaskRepositoryImpl extends TaskRepository {
     : _taskProvider = taskProvider;
   final TaskProvider _taskProvider;
   @override
-  Future<void> addTask(Task task) async {
-    await _taskProvider.addTask(task);
+  FutureEither<Failure, Success> addTask(Task task) async {
+    return await _taskProvider.addTask(task);
   }
 
   @override
@@ -30,7 +30,7 @@ class TaskRepositoryImpl extends TaskRepository {
   }
 
   @override
-  Future<void> updateTask(Task task) async {
-    await _taskProvider.updateTask(task);
+  FutureEither<Failure, Success> updateTask(Task task) async {
+    return await _taskProvider.updateTask(task);
   }
 }

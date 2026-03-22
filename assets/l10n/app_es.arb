@@ -15,5 +15,9 @@
   "updateTask": "Actualizada tarea exitosamente",
   "deleteTask": "Eliminada tarea exitosamente",
   "writeTitleHere": "Escribe aquí el titulo",
-  "errorProcessingImage": "Hubo un error al procesar la imagen"
+  "errorProcessingImage": "Hubo un error al procesar la imagen",
+  "errorDeletingTask": "Error al borrar la tarea",
+  "errorCreatingTask": "Error al crear la tarea",
+  "errorUpdatingTask": "Error al actualizar la tarea",
+  "errorCompletingTask": "Error al completar la tarea"
 }

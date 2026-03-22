@@ -1,3 +1,5 @@
+import 'package:app_task/app/core/either/either.dart';
+import 'package:app_task/app/core/success/success.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:app_task/app/domain/models/task/task_model.dart';
@@ -34,7 +36,8 @@ void main() {
       createdAt: '2025-01-01',
     );
 
-    when(() => mockRepository.deleteTask(any())).thenAnswer((_) async => {});
+    when(() => mockRepository.deleteTask(any()))
+        .thenAnswer((_) async => const Either.right(Success()));
 
     // Act
     await deleteTaskUseCase(task);

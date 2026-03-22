@@ -2,11 +2,13 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
 import '../../../../core/success/success.dart';
+import '../../../../core/utils/theme/extensions/future_either_ext.dart';
 import '../../../../domain/defs/task_creation_source.dart';
 import '../../../../domain/defs/type_defs.dart';
 import '../../../../domain/models/failures/failure.dart';
 import '../../../../domain/models/task/task_model.dart';
 import '../../../../domain/uses_cases/tasks/delete/delete_task_use_case.dart';
+import '../../../../domain/uses_cases/tasks/gets/get_order_by_tasks_params.dart';
 import '../../../../domain/uses_cases/tasks/gets/get_order_by_tasks_use_case.dart';
 import '../../../../domain/uses_cases/tasks/new/new_task_use_case.dart';
 import '../../../../domain/uses_cases/tasks/update/update_task_use_case.dart';
@@ -44,12 +46,14 @@ class NewTaskController extends StateNotifier<NewTaskState> {
 
   bool get hasTask => state.taskToAdd.id.isNotEmpty;
 
-  Future<void> addTask(List<Task> tasks) async {
-    final taskByOrder = await _getOrderByTasksUseCase.call(
-      state.taskToAdd,
-      tasks,
-    );
-    await _newTaskUseCase.call(TaskFromForm(taskByOrder.withGeneratedId()));
+  FutureEither<Failure, Success> addTask(List<Task> tasks) {
+    return _getOrderByTasksUseCase(
+      GetOrderByTasksParams(taskToAdd: state.taskToAdd, currentTasks: tasks),
+    ).flatMap((task) {
+      final newTask = task.withGeneratedId();
+
+      return _newTaskUseCase(TaskFromForm(newTask));
+    });
   }
 
   void onChangeTitle(String? title) {
@@ -72,8 +76,8 @@ class NewTaskController extends StateNotifier<NewTaskState> {
     onlyUpdateWith((state) => state.copyWith(taskToAdd: task));
   }
 
-  Future<void> updateTask(Task task) async {
-    await _updateTaskUseCase.call(task);
+  FutureEither<Failure, Success> updateTask(Task task) async {
+    return await _updateTaskUseCase.call(task);
   }
 
   FutureEither<Failure, Success> deleteTask(Task task) async {

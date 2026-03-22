@@ -11,7 +11,7 @@ class DeleteTaskUseCase implements UseCase<Success, Task> {
   final TaskRepository _taskRepository;
 
   @override
-  FutureEither<Failure, Success<dynamic>> call(Task task) async {
+  FutureEither<Failure, Success> call(Task task) async {
     return await _taskRepository.deleteTask(task);
   }
 }

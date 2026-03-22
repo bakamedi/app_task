@@ -11,6 +11,8 @@ extension SnackbarTypeExt on SnackbarType {
         return scheme.error;
       case SnackbarType.info:
         return scheme.secondary;
+      case SnackbarType.warning:
+        return scheme.errorContainer;
     }
   }
 
@@ -22,6 +24,8 @@ extension SnackbarTypeExt on SnackbarType {
         return scheme.onError;
       case SnackbarType.info:
         return scheme.onSecondary;
+      case SnackbarType.warning:
+        return scheme.errorContainer;
     }
   }
 
@@ -33,6 +37,8 @@ extension SnackbarTypeExt on SnackbarType {
         return Icons.error;
       case SnackbarType.info:
         return Icons.info;
+      case SnackbarType.warning:
+        return Icons.warning;
     }
   }
 }
