@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
 import '../../../../core/adaptative_screen/adaptative_screen.dart';
-import '../../../global/l10n_gen/generated/s.dart';
+import '../../../global/utils/l10n_util.dart';
 import '../../../global/widgets/titles/title_gw.dart';
 import '../controllers/ui/new_task_ui_controller.dart';
 import '../controllers/new_task_controller.dart';
@@ -13,7 +13,6 @@ class NewTaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocale = AppLocalizations.of(context);
     final adaptativeScreen = AdaptativeScreen(context);
 
     return Consumer(
@@ -25,8 +24,8 @@ class NewTaskView extends StatelessWidget {
             title: TitleGW(
               size: adaptativeScreen.dp(2.2),
               title: newTaskController.hasTask
-                  ? appLocale.editTask
-                  : appLocale.taskTitle,
+                  ? L10nUtil.t.editTask
+                  : L10nUtil.t.taskTitle,
             ),
           ),
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,

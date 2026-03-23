@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
 import '../../../global/extensions/context_ext.dart';
-import '../../../global/l10n_gen/generated/s.dart';
 import '../../../global/utils/ui_util.dart';
 import '../controller/task_writing_controller.dart';
 import '../utils/on_erase_all.dart';
@@ -18,8 +17,6 @@ class TaskWritingView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final appLocale = AppLocalizations.of(context);
-
     final taskWritingController = ref.watch(taskWritingProvider);
     taskWritingController.onInit(context.isDarkMode);
     final signature = taskWritingController.signature;
@@ -41,7 +38,7 @@ class TaskWritingView extends ConsumerWidget {
               onUndo: onUndo,
               onRedo: onRedo,
               onDelete: onEraseAll,
-              onSave: () => createTaskFromWriting(appLocale),
+              onSave: () => createTaskFromWriting(),
             );
           },
         ),

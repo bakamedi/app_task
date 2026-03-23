@@ -1,11 +1,14 @@
 // lib/core/utils/navigation_utils.dart
 
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../router/app_router.dart';
 
 abstract class RouterUtil {
   static GoRouter get _router => AppRouter.routerProvider.read();
+
+  static BuildContext get context => AppRouter.navigatorKey.currentContext!;
 
   static void push(String route, {Object? extra}) {
     _router.push(route, extra: extra);

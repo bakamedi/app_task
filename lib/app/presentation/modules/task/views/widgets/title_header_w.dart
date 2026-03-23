@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/extensions/widgets_ext.dart';
-import '../../../../global/l10n_gen/generated/s.dart';
+import '../../../../global/utils/l10n_util.dart';
 import '../../../../global/widgets/titles/title_gw.dart';
 
 class TitleHeaderW extends StatelessWidget {
@@ -13,7 +13,7 @@ class TitleHeaderW extends StatelessWidget {
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [TitleGW(title: AppLocalizations.of(context).title)],
+      children: [TitleGW(title: L10nUtil.t.title)],
     ).padding(EdgeInsets.only(top: topPadding + 10, left: 16, right: 16));
   }
 }

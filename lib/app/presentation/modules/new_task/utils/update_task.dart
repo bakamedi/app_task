@@ -1,12 +1,14 @@
 import '../../../global/extensions/failure_ext.dart';
-import '../../../global/l10n_gen/generated/s.dart';
+import '../../../global/utils/l10n_util.dart';
 import '../../../global/utils/router_util.dart';
 import '../../../global/utils/snackbar_util.dart';
 import '../../task/controllers/task_controller.dart';
 import '../controllers/new_task_controller.dart';
 import '../controllers/ui/new_task_ui_controller.dart';
 
-void updateTask(AppLocalizations appLocale) async {
+void updateTask() async {
+  final appLocale = L10nUtil.t;
+
   final TaskController taskController = taskProvider.read();
   final NewTaskUIController newTaskUIController = newTaskUIProvider.read();
   final NewTaskController newTaskController = newTaskProvider.read();
