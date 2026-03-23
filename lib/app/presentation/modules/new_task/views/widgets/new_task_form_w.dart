@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/extensions/widgets_ext.dart';
-import '../../../../global/l10n_gen/generated/s.dart';
+import '../../../../global/utils/l10n_util.dart';
 import '../../../../global/validators/task_validators.dart';
 import '../../../../global/widgets/btns/primary_btn.dart';
 import '../../../../global/widgets/inputs/input_text_gw.dart';
@@ -21,7 +21,7 @@ class NewTaskFormW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocale = AppLocalizations.of(context);
+    final appLocale = L10nUtil.t;
 
     return Form(
       key: newTaskUIController.formTaskKey,
@@ -33,7 +33,7 @@ class NewTaskFormW extends StatelessWidget {
             onChanged: newTaskController.onChangeTitle,
             initialValue: newTaskController.state.taskToAdd.title,
             labelTxt: '',
-            backgroundLabel: AppLocalizations.of(context).taskTitle,
+            backgroundLabel: L10nUtil.t.taskTitle,
             margin: EdgeInsets.only(top: 20),
             padding: EdgeInsets.symmetric(horizontal: 16),
             textAlign: TextAlign.start,
@@ -49,7 +49,7 @@ class NewTaskFormW extends StatelessWidget {
             onChanged: newTaskController.onChangeDescription,
             initialValue: newTaskController.state.taskToAdd.description,
             labelTxt: '',
-            backgroundLabel: AppLocalizations.of(context).taskDescription,
+            backgroundLabel: L10nUtil.t.taskDescription,
             margin: EdgeInsets.only(top: 20),
             padding: EdgeInsets.symmetric(horizontal: 16),
             textAlign: TextAlign.start,
@@ -64,8 +64,8 @@ class NewTaskFormW extends StatelessWidget {
           1.h.expanded,
           PrimaryButton(
             onPressed: newTaskController.hasTask
-                ? () => updateTask(appLocale)
-                : () => addTask(appLocale),
+                ? () => updateTask()
+                : () => addTask(),
             padding: EdgeInsets.only(bottom: 50),
             label: newTaskController.hasTask
                 ? appLocale.editTask

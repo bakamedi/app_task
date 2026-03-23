@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../global/l10n_gen/generated/s.dart';
+import '../../../global/utils/l10n_util.dart';
 
 List<Tab> taskTabs(BuildContext context) {
   return [
-    Tab(child: Text(AppLocalizations.of(context).all)),
-    Tab(child: Text(AppLocalizations.of(context).pending)),
-    Tab(child: Text(AppLocalizations.of(context).completed)),
+    Tab(child: Text(L10nUtil.t.all)),
+    Tab(child: Text(L10nUtil.t.pending)),
+    Tab(child: Text(L10nUtil.t.completed)),
   ];
 }

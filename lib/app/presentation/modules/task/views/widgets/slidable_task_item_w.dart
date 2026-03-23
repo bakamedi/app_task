@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../../../../domain/models/task/task_model.dart';
-import '../../../../global/l10n_gen/generated/s.dart';
+import '../../../../global/utils/l10n_util.dart';
 import '../../../../global/widgets/slidable/slidable_gw.dart';
 import 'task_item_w.dart';
 
@@ -31,7 +31,7 @@ class SlidableTaskItemW extends StatelessWidget {
           GlobalSlidableActionGW(
             foregroundColor: Colors.red,
             iconData: Icons.delete_outline_outlined,
-            label: AppLocalizations.of(context).delete,
+            label: L10nUtil.t.delete,
             onPressed: (context) => deleteTask(task),
           ),
         ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
-import '../../../../global/l10n_gen/generated/s.dart';
+import '../../../../global/utils/l10n_util.dart';
 import '../../controller/task_writing_controller.dart';
 
 class TextInputTitleW extends StatelessWidget {
@@ -11,7 +11,7 @@ class TextInputTitleW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocale = AppLocalizations.of(context);
+    final appLocale = L10nUtil.t;
     final adaptativeScreen = AdaptativeScreen(context);
 
     return TextField(

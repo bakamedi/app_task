@@ -1,11 +1,13 @@
 import '../../../global/extensions/failure_ext.dart';
-import '../../../global/l10n_gen/generated/s.dart';
+import '../../../global/utils/l10n_util.dart';
 import '../../../global/utils/snackbar_util.dart';
 import '../../task/controllers/task_controller.dart';
 import '../../../global/utils/router_util.dart';
 import '../controller/task_writing_controller.dart';
 
-void createTaskFromWriting(AppLocalizations appLocale) async {
+void createTaskFromWriting() async {
+  final appLocale = L10nUtil.t;
+
   final taskWritingController = taskWritingProvider.read();
   final taskController = taskProvider.read();
 
