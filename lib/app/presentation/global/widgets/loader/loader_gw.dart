@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
-import '../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../controllers/loader/loader_gc.dart';
+import '../../extensions/responsive_num_ext.dart';
 
 class LoaderGW extends ConsumerWidget {
   const LoaderGW({super.key});
@@ -23,8 +23,6 @@ class _LoaderOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final adaptativeScreen = AdaptativeScreen.of(context);
-
     return PopScope(
       canPop: false,
       child: Material(
@@ -35,7 +33,7 @@ class _LoaderOverlay extends StatelessWidget {
             color: Colors.black.withValues(alpha: 0.4),
             child: Center(
               child: Transform.scale(
-                scale: adaptativeScreen.dp(0.25),
+                scale: .25.sp,
                 child: const CircularProgressIndicator.adaptive(),
               ),
             ),

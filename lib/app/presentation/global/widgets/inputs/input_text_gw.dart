@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../../core/adaptative_screen/adaptative_screen.dart';
+import '../../extensions/responsive_num_ext.dart';
 
 final radius = BorderRadius.circular(12.0);
 
@@ -66,8 +66,6 @@ class InputTextFieldGW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final adaptativeScreen = AdaptativeScreen(context);
-
     return Container(
       margin: margin,
       padding: padding,
@@ -100,7 +98,6 @@ class InputTextFieldGW extends StatelessWidget {
         onTapOutside: onTapOutside,
         decoration: _simpleInput(
           context,
-          adaptativeScreen,
           labelTxt,
           backgroundLabel,
           prefix: prefixInput,
@@ -108,7 +105,7 @@ class InputTextFieldGW extends StatelessWidget {
         ),
         style: TextStyle(
           color: Colors.black,
-          fontSize: adaptativeScreen.dp(1.5),
+          fontSize: 1.5.sp,
           fontWeight: FontWeight.w500,
         ),
         textInputAction: textInputAction,
@@ -121,7 +118,6 @@ class InputTextFieldGW extends StatelessWidget {
 /// Diseño visual para que se vea como el input redondeado gris claro
 InputDecoration _simpleInput(
   BuildContext context,
-  AdaptativeScreen adaptativeScreen,
   String labelTxt,
   String hintText, {
   Widget? suffix,
@@ -146,7 +142,7 @@ InputDecoration _simpleInput(
     ),
     hintStyle: TextStyle(
       color: Colors.black.withValues(alpha: 0.6),
-      fontSize: adaptativeScreen.dp(1.5),
+      fontSize: 1.5.sp,
       fontWeight: FontWeight.w500,
     ),
     suffixIcon: suffix,

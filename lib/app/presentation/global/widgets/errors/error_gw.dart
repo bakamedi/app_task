@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ErrorGW extends StatelessWidget {
-  const ErrorGW({super.key});
+  const ErrorGW({super.key, this.error});
+  final String? error;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -11,7 +12,7 @@ class ErrorGW extends StatelessWidget {
         spacing: 20,
         children: [
           Text(
-            'Error obteniendo la data inicial',
+            error ?? 'Error obteniendo la data inicial',
             style: const TextStyle(fontSize: 15),
           ),
 

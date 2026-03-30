@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/adaptative_screen/adaptative_screen.dart';
+import '../../../../global/extensions/responsive_num_ext.dart';
 import '../../../../global/extensions/widgets_ext.dart';
 
 class EmptyTaskW extends StatelessWidget {
@@ -8,23 +8,22 @@ class EmptyTaskW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AdaptativeScreen screen = AdaptativeScreen(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(
           Icons.add_task_rounded,
-          size: screen.dp(10),
+          size: 10.sp,
           color: Colors.grey.withValues(alpha: 0.5),
         ),
         Text(
           'There are no tasks available',
           style: TextStyle(
             color: Colors.grey.withValues(alpha: 0.5),
-            fontSize: screen.dp(2),
+            fontSize: 2.sp,
           ),
-        ).padding(EdgeInsets.only(bottom: screen.bhp(20))),
+        ).padding(EdgeInsets.only(bottom: 20.rh)),
       ],
     ).center;
   }

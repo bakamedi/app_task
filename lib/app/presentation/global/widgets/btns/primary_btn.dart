@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/adaptative_screen/adaptative_screen.dart';
+
+import '../../extensions/responsive_num_ext.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -21,8 +22,6 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AdaptativeScreen adaptativeScreen = AdaptativeScreen(context);
-    final fontSizeResponsive = adaptativeScreen.dp(1.6);
     final primaryColor = Theme.of(context).primaryColor;
 
     return Container(
@@ -43,7 +42,7 @@ class PrimaryButton extends StatelessWidget {
           label,
           style: TextStyle(
             color: Colors.white,
-            fontSize: fontSize ?? fontSizeResponsive,
+            fontSize: fontSize ?? 1.6.sp,
             fontWeight: FontWeight.bold,
           ),
         ),

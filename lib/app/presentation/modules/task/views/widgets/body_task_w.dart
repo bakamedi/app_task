@@ -13,7 +13,7 @@ class BodyTaskW extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppStateHandlerGW(
       appViewState: taskController.state.appViewState,
-      onSuccess: (_) => TabBarView(
+      onSuccess: (context, _) => TabBarView(
         children: [
           TasksW(tasks: taskController.all),
           TasksW(tasks: taskController.todoTasks),

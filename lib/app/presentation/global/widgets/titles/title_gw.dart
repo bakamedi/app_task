@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/adaptative_screen/adaptative_screen.dart';
+import '../../extensions/responsive_num_ext.dart';
 
 class TitleGW extends StatelessWidget {
   const TitleGW({super.key, required this.title, this.size});
@@ -10,8 +10,7 @@ class TitleGW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final adaptativeScreen = AdaptativeScreen.of(context);
-    final fontSize = size ?? adaptativeScreen.dp(2.5);
+    final fontSize = size ?? 2.5.sp;
 
     return Text(
       title,
