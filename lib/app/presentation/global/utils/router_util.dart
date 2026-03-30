@@ -14,6 +14,10 @@ abstract class RouterUtil {
     _router.push(route, extra: extra);
   }
 
+  static void pushReplacement(String route, {Object? extra}) {
+    _router.pushReplacement(route, extra: extra);
+  }
+
   static void go(String route, {Object? extra}) {
     _router.go(route, extra: extra);
   }

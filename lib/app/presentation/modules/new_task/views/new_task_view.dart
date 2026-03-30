@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
-import '../../../../core/adaptative_screen/adaptative_screen.dart';
+import '../../../global/extensions/responsive_num_ext.dart';
 import '../../../global/utils/l10n_util.dart';
 import '../../../global/widgets/titles/title_gw.dart';
 import '../controllers/ui/new_task_ui_controller.dart';
@@ -13,8 +13,6 @@ class NewTaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final adaptativeScreen = AdaptativeScreen(context);
-
     return Consumer(
       builder: (_, ref, _) {
         final newTaskController = ref.watch(newTaskProvider);
@@ -22,7 +20,7 @@ class NewTaskView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: TitleGW(
-              size: adaptativeScreen.dp(2.2),
+              size: 20.sp,
               title: newTaskController.hasTask
                   ? L10nUtil.t.editTask
                   : L10nUtil.t.taskTitle,

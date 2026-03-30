@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../../core/adaptative_screen/adaptative_screen.dart';
+import '../../extensions/responsive_num_ext.dart';
 
 final radius = BorderRadius.circular(12.0);
 
@@ -66,8 +66,6 @@ class InputTextFieldGW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final adaptativeScreen = AdaptativeScreen(context);
-
     return Container(
       margin: margin,
       padding: padding,
@@ -88,8 +86,7 @@ class InputTextFieldGW extends StatelessWidget {
         textAlign: textAlign,
         autofocus: autofocus,
         textDirection: textDirection,
-        autovalidateMode:
-            autovalidateMode ?? AutovalidateMode.onUserInteraction,
+        autovalidateMode: autovalidateMode ?? .onUserInteraction,
         focusNode: focusNode,
         maxLength: maxLength,
         maxLines: maxLines,
@@ -100,7 +97,6 @@ class InputTextFieldGW extends StatelessWidget {
         onTapOutside: onTapOutside,
         decoration: _simpleInput(
           context,
-          adaptativeScreen,
           labelTxt,
           backgroundLabel,
           prefix: prefixInput,
@@ -108,8 +104,8 @@ class InputTextFieldGW extends StatelessWidget {
         ),
         style: TextStyle(
           color: Colors.black,
-          fontSize: adaptativeScreen.dp(1.5),
-          fontWeight: FontWeight.w500,
+          fontSize: 15.sp,
+          fontWeight: .w500,
         ),
         textInputAction: textInputAction,
         validator: (value) => validator?.call(value),
@@ -121,7 +117,6 @@ class InputTextFieldGW extends StatelessWidget {
 /// Diseño visual para que se vea como el input redondeado gris claro
 InputDecoration _simpleInput(
   BuildContext context,
-  AdaptativeScreen adaptativeScreen,
   String labelTxt,
   String hintText, {
   Widget? suffix,
@@ -131,23 +126,20 @@ InputDecoration _simpleInput(
     hintText: hintText,
     filled: true,
     fillColor: const Color.fromARGB(206, 222, 224, 228), // fondo gris claro
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
-    ),
+    contentPadding: const .symmetric(horizontal: 16, vertical: 14),
+    border: OutlineInputBorder(borderRadius: .circular(12), borderSide: .none),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+      borderRadius: .circular(12),
+      borderSide: .none,
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+      borderRadius: .circular(12),
+      borderSide: .none,
     ),
     hintStyle: TextStyle(
       color: Colors.black.withValues(alpha: 0.6),
-      fontSize: adaptativeScreen.dp(1.5),
-      fontWeight: FontWeight.w500,
+      fontSize: 15.sp,
+      fontWeight: .w500,
     ),
     suffixIcon: suffix,
     prefixIcon: prefix,

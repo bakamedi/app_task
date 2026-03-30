@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../domain/models/task/task_model.dart';
+import '../../../../domain/models/task/task_model.dart';
+import '../../../modules/task/views/widgets/slidable_task_item_w.dart';
 
-class DragAndDropListW extends StatelessWidget {
-  const DragAndDropListW({
+class ReorderableTasksGW extends StatelessWidget {
+  const ReorderableTasksGW({
     super.key,
-    required this.itemBuilder,
     required this.onReorder,
     required this.tasks,
+    required this.deleteTask,
+    required this.goTask,
+    required this.updateCompleted,
   });
-  final Widget Function(BuildContext, int) itemBuilder;
-  final void Function(int, int) onReorder;
   final List<Task> tasks;
+  final void Function(Task) deleteTask;
+  final void Function(Task) goTask;
+  final void Function(Task) updateCompleted;
+  final void Function(int, int) onReorder;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,16 @@ class DragAndDropListW extends StatelessWidget {
       onReorder: onReorder,
       padding: .zero,
       itemCount: tasks.length,
-      itemBuilder: itemBuilder,
+      itemBuilder: (BuildContext context, int index) {
+        final task = tasks[index];
+        return SlidableTaskItemW(
+          key: ValueKey(task.id),
+          task: task,
+          deleteTask: deleteTask,
+          goTask: goTask,
+          updateCompleted: updateCompleted,
+        );
+      },
       proxyDecorator: (Widget child, int index, Animation<double> animation) {
         final curvedAnimation = CurvedAnimation(
           parent: animation,

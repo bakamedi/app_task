@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../global/extensions/responsive_num_ext.dart';
 import '../../../../global/extensions/strings_ext.dart';
 import '../../../../global/extensions/widgets_ext.dart';
 
@@ -31,11 +32,11 @@ class TaskItemW extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        padding: const EdgeInsets.all(16),
+        margin: const .symmetric(vertical: 10, horizontal: 20),
+        padding: const .all(16),
         decoration: BoxDecoration(
           color: theme.cardColor,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: .circular(20),
           boxShadow: [
             BoxShadow(
               color: theme.shadowColor.withValues(alpha: 0.08),
@@ -49,9 +50,7 @@ class TaskItemW extends StatelessWidget {
           children: [
             Checkbox(
               value: completed,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-              ),
+              shape: RoundedRectangleBorder(borderRadius: .circular(6)),
               onChanged: (_) => onCheckboxTap(),
               activeColor: colorScheme.primary,
             ),
@@ -67,9 +66,8 @@ class TaskItemW extends StatelessWidget {
                         title,
                         style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          decoration:
-                              completed ? TextDecoration.lineThrough : null,
+                          fontWeight: .w600,
+                          decoration: completed ? .lineThrough : null,
                           color: theme.textTheme.bodyLarge?.color,
                         ),
                       ),
@@ -88,7 +86,7 @@ class TaskItemW extends StatelessWidget {
                   Text(
                     description,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       color: theme.textTheme.bodyMedium?.color?.withValues(
                         alpha: 0.8,
                       ),

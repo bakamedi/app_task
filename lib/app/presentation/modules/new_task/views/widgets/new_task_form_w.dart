@@ -25,21 +25,21 @@ class NewTaskFormW extends StatelessWidget {
 
     return Form(
       key: newTaskUIController.formTaskKey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: .onUserInteraction,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: .start,
         children: [
           InputTextFieldGW(
             onChanged: newTaskController.onChangeTitle,
             initialValue: newTaskController.state.taskToAdd.title,
             labelTxt: '',
             backgroundLabel: L10nUtil.t.taskTitle,
-            margin: EdgeInsets.only(top: 20),
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            textAlign: TextAlign.start,
+            margin: .only(top: 20),
+            padding: .symmetric(horizontal: 16),
+            textAlign: .start,
             maxLines: 1,
-            textInputAction: TextInputAction.next,
-            keyboardType: TextInputType.text,
+            textInputAction: .next,
+            keyboardType: .text,
             obscureText: false,
             readOnly: false,
             enabled: true,
@@ -50,11 +50,11 @@ class NewTaskFormW extends StatelessWidget {
             initialValue: newTaskController.state.taskToAdd.description,
             labelTxt: '',
             backgroundLabel: L10nUtil.t.taskDescription,
-            margin: EdgeInsets.only(top: 20),
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            textAlign: TextAlign.start,
+            margin: .only(top: 20),
+            padding: .symmetric(horizontal: 16),
+            textAlign: .start,
             maxLines: 3,
-            textInputAction: TextInputAction.done,
+            textInputAction: .done,
             keyboardType: TextInputType.multiline,
             obscureText: false,
             readOnly: false,
@@ -66,13 +66,13 @@ class NewTaskFormW extends StatelessWidget {
             onPressed: newTaskController.hasTask
                 ? () => updateTask()
                 : () => addTask(),
-            padding: EdgeInsets.only(bottom: 50),
+            padding: .only(bottom: 50),
             label: newTaskController.hasTask
                 ? appLocale.editTask
                 : appLocale.addTask,
           ),
         ],
       ),
-    ).padding(EdgeInsets.only(left: 15, right: 15));
+    ).padding(.only(left: 15, right: 15));
   }
 }

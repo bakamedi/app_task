@@ -9,6 +9,7 @@ import '../../../../domain/uses_cases/tasks/task_classifier.dart';
 import '../../../../domain/uses_cases/tasks/gets/get_tasks_use_case.dart';
 import '../../../../domain/uses_cases/uses_cases.dart';
 import '../../../global/extensions/copy_with_updater_ext.dart';
+import '../../../global/utils/app_view_state_util.dart';
 import 'task_state.dart';
 
 final taskProvider = Provider.state<TaskController, TaskState>(
@@ -35,26 +36,27 @@ class TaskController extends StateNotifier<TaskState> {
   /// y clasifica las tareas en pendientes y completadas.
   Future<void> init() async {
     // Obtiene las tareas desde el backend
-    state = state.copyWith(appViewState: .loading);
+    state = state.copyWith(appViewState: const Loading());
     final result = await _getTasksUseCase.call(NoParams());
-    result.fold((failure) => state = state.copyWith(appViewState: .error), (
-      tasks,
-    ) {
-      final classified = TaskClassifier.from(
-        tasks,
-      ); // Clasifica las tareas en pendientes y completadas
+    result.fold(
+      (failure) => state = state.copyWith(appViewState: const Error('')),
+      (tasks) {
+        final classified = TaskClassifier.from(
+          tasks,
+        ); // Clasifica las tareas en pendientes y completadas
 
-      // Actualiza el estado con las tareas clasificadas
-      onlyUpdateWith(
-        (state) => state.copyWith(
-          all: classified.all,
-          toDo: classified.toDo,
-          completed: classified.completed,
-          expandableKey: GlobalKey<ExpandableFabState>(),
-          appViewState: .success,
-        ),
-      );
-    });
+        // Actualiza el estado con las tareas clasificadas
+        onlyUpdateWith(
+          (state) => state.copyWith(
+            all: classified.all,
+            toDo: classified.toDo,
+            completed: classified.completed,
+            expandableKey: GlobalKey<ExpandableFabState>(),
+            appViewState: const Success(''),
+          ),
+        );
+      },
+    );
   }
 
   void onChangeToggle() {

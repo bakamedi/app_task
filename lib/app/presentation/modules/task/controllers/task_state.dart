@@ -12,7 +12,7 @@ abstract class TaskState with _$TaskState {
   const TaskState._();
 
   const factory TaskState({
-    @Default(AppViewStateUtil.idle) AppViewStateUtil appViewState,
+    @Default(Idle()) AppViewState appViewState,
     @Default([]) List<Task> toDo,
     @Default([]) List<Task> completed,
     @Default([]) List<Task> all,

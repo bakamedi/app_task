@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'action_btn_w.dart';
@@ -30,17 +29,17 @@ class TaskFabToolbarW extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(28),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        filter: .blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           height: 56,
-          padding: const EdgeInsets.symmetric(horizontal: 6),
+          padding: const .symmetric(horizontal: 6),
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: .12),
-            borderRadius: BorderRadius.circular(28),
-            border: Border.all(color: Colors.white.withValues(alpha: .15)),
+            borderRadius: .circular(28),
+            border: .all(color: Colors.white.withValues(alpha: .15)),
           ),
           child: Row(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               ActionBtnW(
                 icon: Icons.undo,
@@ -80,7 +79,7 @@ class TaskFabToolbarW extends StatelessWidget {
     return Container(
       width: 1,
       height: 28,
-      margin: const EdgeInsets.symmetric(horizontal: 4),
+      margin: const .symmetric(horizontal: 4),
       color: Colors.white.withValues(alpha: .15),
     );
   }
