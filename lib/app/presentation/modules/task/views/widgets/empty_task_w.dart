@@ -9,8 +9,8 @@ class EmptyTaskW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: .center,
+      mainAxisAlignment: .center,
       children: [
         Icon(
           Icons.add_task_rounded,
@@ -23,7 +23,7 @@ class EmptyTaskW extends StatelessWidget {
             color: Colors.grey.withValues(alpha: 0.5),
             fontSize: 2.sp,
           ),
-        ).padding(EdgeInsets.only(bottom: 20.rh)),
+        ).padding(.only(bottom: 20.rh)),
       ],
     ).center;
   }

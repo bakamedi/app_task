@@ -18,9 +18,9 @@ class TextInputTitleW extends StatelessWidget {
       decoration: InputDecoration(
         hintText: appLocale.writeTitleHere,
         border: InputBorder.none,
-        hintStyle: TextStyle(fontSize: 2.2.sp, fontWeight: FontWeight.bold),
+        hintStyle: TextStyle(fontSize: 20.sp, fontWeight: .bold),
       ),
-      style: TextStyle(fontSize: 2.2.sp, fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: 2.2.sp, fontWeight: .bold),
     );
   }
 }

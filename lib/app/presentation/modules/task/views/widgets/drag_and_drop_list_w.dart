@@ -19,7 +19,7 @@ class DragAndDropListW extends StatelessWidget {
 
     return ReorderableListView.builder(
       onReorder: onReorder,
-      padding: EdgeInsets.zero,
+      padding: .zero,
       itemCount: tasks.length,
       itemBuilder: itemBuilder,
       proxyDecorator: (Widget child, int index, Animation<double> animation) {
@@ -38,7 +38,7 @@ class DragAndDropListW extends StatelessWidget {
               child: Material(
                 elevation: elevation,
                 color: primaryColor.withValues(alpha: 0.5),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: .circular(12),
                 child: child,
               ),
             );

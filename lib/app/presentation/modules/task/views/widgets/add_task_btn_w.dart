@@ -13,10 +13,10 @@ class AddTaskBtnW extends StatelessWidget {
     return InkWell(
       onTap: () => RouterUtil.push(NewTaskRoute.path),
       child: Container(
-        padding: const EdgeInsets.all(15),
+        padding: const .all(15),
         decoration: BoxDecoration(
           color: primaryColor.withValues(alpha: 0.2),
-          shape: BoxShape.rectangle,
+          shape: .rectangle,
         ),
         child: Icon(Icons.add, color: primaryColor),
       ),

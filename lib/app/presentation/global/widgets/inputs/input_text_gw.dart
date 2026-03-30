@@ -86,8 +86,7 @@ class InputTextFieldGW extends StatelessWidget {
         textAlign: textAlign,
         autofocus: autofocus,
         textDirection: textDirection,
-        autovalidateMode:
-            autovalidateMode ?? AutovalidateMode.onUserInteraction,
+        autovalidateMode: autovalidateMode ?? .onUserInteraction,
         focusNode: focusNode,
         maxLength: maxLength,
         maxLines: maxLines,
@@ -105,8 +104,8 @@ class InputTextFieldGW extends StatelessWidget {
         ),
         style: TextStyle(
           color: Colors.black,
-          fontSize: 1.5.sp,
-          fontWeight: FontWeight.w500,
+          fontSize: 15.sp,
+          fontWeight: .w500,
         ),
         textInputAction: textInputAction,
         validator: (value) => validator?.call(value),
@@ -127,23 +126,20 @@ InputDecoration _simpleInput(
     hintText: hintText,
     filled: true,
     fillColor: const Color.fromARGB(206, 222, 224, 228), // fondo gris claro
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
-    ),
+    contentPadding: const .symmetric(horizontal: 16, vertical: 14),
+    border: OutlineInputBorder(borderRadius: .circular(12), borderSide: .none),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+      borderRadius: .circular(12),
+      borderSide: .none,
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+      borderRadius: .circular(12),
+      borderSide: .none,
     ),
     hintStyle: TextStyle(
       color: Colors.black.withValues(alpha: 0.6),
-      fontSize: 1.5.sp,
-      fontWeight: FontWeight.w500,
+      fontSize: 15.sp,
+      fontWeight: .w500,
     ),
     suffixIcon: suffix,
     prefixIcon: prefix,

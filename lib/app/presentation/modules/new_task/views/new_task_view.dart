@@ -20,7 +20,7 @@ class NewTaskView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: TitleGW(
-              size: 2.2.sp,
+              size: 20.sp,
               title: newTaskController.hasTask
                   ? L10nUtil.t.editTask
                   : L10nUtil.t.taskTitle,

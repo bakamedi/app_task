@@ -17,15 +17,15 @@ class ExpandedCreateFabW extends StatelessWidget {
 
     return ExpandableFab(
       key: expandableKey,
-      type: ExpandableFabType.fan,
-      childrenAnimation: ExpandableFabAnimation.rotate,
+      type: .fan,
+      childrenAnimation: .rotate,
       distance: 70,
       openButtonBuilder: RotateFloatingActionButtonBuilder(
         child: const Icon(Icons.menu),
-        fabSize: ExpandableFabSize.regular,
+        fabSize: .regular,
         foregroundColor: colorScheme.onPrimary,
         backgroundColor: colorScheme.primary,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: .circular(12)),
       ),
       closeButtonBuilder: FloatingActionButtonBuilder(
         size: 56,
@@ -38,10 +38,10 @@ class ExpandedCreateFabW extends StatelessWidget {
               return InkWell(
                 onTap: onPressed,
                 child: Container(
-                  padding: const EdgeInsets.all(15),
+                  padding: const .all(15),
                   decoration: BoxDecoration(
                     color: primaryColor.withValues(alpha: 0.2),
-                    shape: BoxShape.circle,
+                    shape: .circle,
                   ),
                   child: Icon(Icons.close, color: primaryColor),
                 ),

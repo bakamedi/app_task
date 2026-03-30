@@ -18,9 +18,9 @@ class GlobalSlidableActionGW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SlidableAction(
-      padding: const EdgeInsets.only(top: 16),
+      padding: const .only(top: 16),
       autoClose: true,
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      borderRadius: const .all(Radius.circular(10)),
       onPressed: (context) => onPressed(context),
       backgroundColor: Colors.transparent,
       foregroundColor: foregroundColor,

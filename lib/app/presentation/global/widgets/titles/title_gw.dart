@@ -10,11 +10,11 @@ class TitleGW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = size ?? 2.5.sp;
+    final fontSize = size ?? 25.sp;
 
     return Text(
       title,
-      style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: fontSize, fontWeight: .bold),
     );
   }
 }

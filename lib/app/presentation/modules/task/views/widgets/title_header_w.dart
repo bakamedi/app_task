@@ -14,6 +14,6 @@ class TitleHeaderW extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [TitleGW(title: L10nUtil.t.title)],
-    ).padding(EdgeInsets.only(top: topPadding + 10, left: 16, right: 16));
+    ).padding(.only(top: topPadding + 10, left: 16, right: 16));
   }
 }

@@ -10,12 +10,12 @@ import '../../utils/reorder_task.dart';
 import '../../utils/update_completed.dart';
 import 'empty_task_w.dart';
 
-class TasksW extends ConsumerWidget {
+class TasksW extends StatelessWidget {
   const TasksW({super.key, required this.tasks});
   final List<Task> tasks;
 
   @override
-  Widget build(BuildContext context, BuilderRef ref) {
+  Widget build(BuildContext context) {
     return MainScaffoldGW(
       isEmpty: tasks.isEmpty,
       emptyBody: const EmptyTaskW(),
