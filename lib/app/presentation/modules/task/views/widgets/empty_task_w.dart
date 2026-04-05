@@ -8,22 +8,25 @@ class EmptyTaskW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final outline = Theme.of(context).colorScheme.outline;
+
     return Column(
       crossAxisAlignment: .center,
       mainAxisAlignment: .center,
+      spacing: 25,
       children: [
         Icon(
           Icons.add_task_rounded,
-          size: 10.sp,
-          color: Colors.grey.withValues(alpha: 0.5),
+          size: 100.sp,
+          color: outline.withValues(alpha: 0.2),
         ),
         Text(
           'There are no tasks available',
           style: TextStyle(
-            color: Colors.grey.withValues(alpha: 0.5),
-            fontSize: 2.sp,
+            color: outline.withValues(alpha: 0.2),
+            fontSize: 22.sp,
           ),
-        ).padding(.only(bottom: 20.rh)),
+        ).padding(.only(bottom: 250.rh)),
       ],
     ).center;
   }
