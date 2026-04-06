@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
-import '../../../../domain/uses_cases/user_preferences/get_user_preferences_use_case.dart';
-import '../../../../domain/uses_cases/user_preferences/save_user_preferences_use_case.dart';
-import '../../../../domain/uses_cases/uses_cases.dart';
-import '../../extensions/copy_with_updater_ext.dart';
+import '../../../../../domain/uses_cases/user_preferences/get_user_preferences_use_case.dart';
+import '../../../../../domain/uses_cases/user_preferences/save_user_preferences_use_case.dart';
+import '../../../../../domain/uses_cases/uses_cases.dart';
+import '../../../extensions/copy_with_updater_ext.dart';
 import 'session_state.dart';
 
 final sessionGP = Provider.state<SessionGC, SessionState>(
