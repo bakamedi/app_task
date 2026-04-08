@@ -52,4 +52,10 @@ class UseCases {
           .read(),
     ),
   );
+
+  static final onInitFirebaseUseCase = Provider(
+    (ref) => OnInitFirebaseUseCase(
+      firebaseRepository: Repositories.firebaseRep.read(),
+    ),
+  );
 }

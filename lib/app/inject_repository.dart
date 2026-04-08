@@ -30,7 +30,7 @@ class Repositories {
 
   static final timeagoRep = Provider<TimeagoRepository>(
     (ref) => TimeagoRepositoryImpl(
-      timeagoProvider: TimeagoInjectProvider.taskInjectProvider.read(),
+      timeagoProvider: TimeagoInjectProvider.timeagoInjectProvider.read(),
     ),
   );
 
@@ -38,4 +38,10 @@ class Repositories {
       Provider<GoogleTextRecognitionRepository>(
         (ref) => GoogleTextRecognitionRepositoryImpl(),
       );
+
+  static final firebaseRep = Provider<FirebaseRepository>(
+    (ref) => FirebaseRepositoryImpl(
+      firebaseProvider: FirebaseInjectProvider.firebaseInjectProvider.read(),
+    ),
+  );
 }
